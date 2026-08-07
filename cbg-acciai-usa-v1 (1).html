@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBG Acciai USA — Precision Industrial Blades</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181C;
+    --ink-2:#1E252B;
+    --steel:#3A4652;
+    --paper:#E9EAE4;
+    --paper-2:#F4F4EF;
+    --line:#C7CBC0;
+    --line-dark:#3A4249;
+    --text:#1B1E20;
+    --text-soft:#5B6269;
+
+    --red:#B33A2E;
+    --red-ink:#F7E9E7;
+    --blue:#2E5C8A;
+    --blue-ink:#E7EEF4;
+    --black:#24272A;
+    --black-ink:#EAEAE9;
+    --gold:#A87A2C;
+    --gold-ink:#F5EEE1;
+    --silver:#8B949B;
+    --silver-ink:#EFF1F2;
+    --white-lbl:#D8D6C9;
+    --white-ink:#F8F8F4;
+
+    --cut: 3.2vw;
+    --maxw: 1200px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--text);
+    background:var(--paper);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+
+  h1,h2,h3,h4{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    font-weight:600;
+    line-height:1.05;
+    color:var(--ink);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--text-soft);
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  section{position:relative;}
+
+  /* ---------- diagonal cut divider ---------- */
+  .cut-bottom{
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%);
+  }
+  .cut-top{
+    clip-path: polygon(0 var(--cut), 100% 0, 100% 100%, 0 100%);
+  }
+  .cut-both{
+    clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 0 100%);
+  }
+  @media (max-width:720px){
+    .cut-bottom,.cut-top,.cut-both{clip-path:none;}
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+    outline:2px solid var(--red);
+    outline-offset:2px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(20,24,28,0.96);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:0 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .logo{
+    font-family:'Oswald', sans-serif;
+    font-size:1.05rem; font-weight:600; letter-spacing:0.04em;
+    color:var(--paper-2);
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo .grades{display:flex; gap:3px;}
+  .logo .grades span{width:5px; height:16px;}
+  .logo small{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem; color:var(--silver);
+    letter-spacing:0.14em; font-weight:400;
+  }
+  nav.links{display:flex; align-items:center; gap:28px;}
+  nav.links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem; letter-spacing:0.09em; text-transform:uppercase;
+    color:var(--silver-ink); opacity:0.85;
+  }
+  nav.links a:hover{opacity:1; color:#fff;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem; letter-spacing:0.08em; text-transform:uppercase;
+    padding:11px 20px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .btn-red{background:var(--red); color:#fff;}
+  .btn-red:hover{background:#8f2e24;}
+  .btn-outline{border-color:var(--silver); color:var(--paper-2);}
+  .btn-outline:hover{border-color:#fff; color:#fff;}
+  .btn-dark{background:var(--ink); color:var(--paper-2);}
+  .btn-dark:hover{background:#000;}
+
+  .nav-toggle{display:none; flex-direction:column; gap:4px; background:none; border:0; cursor:pointer; padding:8px;}
+  .nav-toggle span{width:22px; height:2px; background:#fff; display:block;}
+
+  @media (max-width:900px){
+    nav.links{
+      position:fixed; top:64px; left:0; right:0; bottom:0;
+      background:var(--ink); flex-direction:column; align-items:flex-start;
+      padding:28px 32px; gap:22px; transform:translateX(100%);
+      transition:transform 0.25s ease; overflow-y:auto;
+    }
+    nav.links.open{transform:translateX(0);}
+    nav.links a{font-size:0.95rem;}
+    .nav-toggle{display:flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--paper-2);
+    padding:150px 0 110px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;
+  }
+  .hero-eyebrow{color:var(--silver); margin-bottom:18px;}
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.9rem);
+    color:#fff;
+    margin-bottom:22px;
+  }
+  .hero h1 em{font-style:normal; color:var(--red);}
+  .hero p.lede{
+    font-size:1.08rem; color:#C4CAD0; max-width:46ch; margin-bottom:34px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+
+  .blade-graphic{position:relative;}
+  .blade-graphic svg{width:100%; height:auto;}
+  .blade-caption{
+    margin-top:14px; display:flex; justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem;
+    color:var(--silver); letter-spacing:0.06em;
+  }
+
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero{padding:120px 0 70px;}
+  }
+
+  /* ---------- APPLICATIONS ---------- */
+  .apps{
+    background:var(--paper-2);
+    padding:100px 0 90px;
+  }
+  .section-head{margin-bottom:48px; max-width:60ch;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem); margin-top:10px;}
+  .apps-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:2px;
+    background:var(--line);
+  }
+  .app-card{
+    background:var(--ink);
+    color:var(--paper-2);
+    padding:34px 22px 28px;
+    min-height:230px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    position:relative;
+    transition:background 0.18s;
+  }
+  .app-card:hover{background:var(--ink-2);}
+  .app-card .num{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--silver);
+  }
+  .app-card h3{
+    font-size:1.05rem; color:#fff; margin:16px 0 10px; line-height:1.15;
+  }
+  .app-card p{font-size:0.82rem; color:#AEB5BB;}
+  .app-card .swatch{width:26px; height:5px; margin-bottom:14px;}
+
+  @media (max-width:980px){
+    .apps-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .apps-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{
+    background:var(--ink);
+    color:#fff;
+    padding:70px 0;
+  }
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:24px;
+  }
+  .stat-num{
+    font-family:'Oswald', sans-serif; font-weight:600;
+    font-size:clamp(1.9rem,3.4vw,2.6rem); color:var(--paper-2);
+  }
+  .stat-label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem;
+    color:var(--silver); letter-spacing:0.05em; margin-top:8px;
+  }
+  @media (max-width:900px){
+    .stats-grid{grid-template-columns:repeat(2,1fr); row-gap:36px;}
+  }
+
+  /* ---------- STEEL GRADES ---------- */
+  .grades-section{background:var(--paper); padding:100px 0 90px;}
+  .grades-list{display:flex; flex-direction:column; border-top:1px solid var(--line);}
+  .grade-row{
+    display:grid; grid-template-columns:160px 1fr 1.4fr; gap:24px; align-items:center;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .grade-tag{
+    display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.85rem; letter-spacing:0.04em;
+  }
+  .grade-chip{width:14px; height:14px; flex:none;}
+  .grade-name{font-family:'Oswald', sans-serif; font-weight:600; font-size:1.15rem; text-transform:uppercase;}
+  .grade-desc{color:var(--text-soft); font-size:0.92rem; max-width:52ch;}
+  @media (max-width:720px){
+    .grade-row{grid-template-columns:1fr; gap:6px; padding:18px 0;}
+  }
+
+  /* ---------- PRODUCTS / TABS ---------- */
+  .products{background:var(--ink); color:var(--paper-2); padding:100px 0 100px;}
+  .products .section-head h2{color:#fff;}
+  .products .eyebrow{color:var(--silver);}
+  .tabs{
+    display:flex; gap:2px; flex-wrap:wrap; margin-bottom:0;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .tab-btn{
+    background:none; border:0; cursor:pointer;
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--silver); padding:14px 18px;
+    border-bottom:2px solid transparent;
+  }
+  .tab-btn.active{color:#fff; border-color:var(--red);}
+  .tab-panels{padding-top:44px;}
+  .tab-panel{display:none; grid-template-columns:1fr 1fr; gap:56px;}
+  .tab-panel.active{display:grid;}
+  .tab-panel h3{color:#fff; font-size:1.6rem; margin-bottom:14px;}
+  .tab-panel p{color:#B7BEC4; margin-bottom:20px; max-width:56ch;}
+  .spec-list{border-top:1px solid var(--line-dark);}
+  .spec-row{
+    display:flex; justify-content:space-between; padding:12px 0;
+    border-bottom:1px solid var(--line-dark);
+    font-family:'IBM Plex Mono', monospace; font-size:0.82rem;
+  }
+  .spec-row span:first-child{color:#8B949B;}
+  .spec-row span:last-child{color:#fff;}
+  .product-lines{display:flex; flex-direction:column; gap:10px;}
+  .product-line{
+    padding:12px 16px; background:var(--ink-2); border-left:3px solid var(--red);
+    font-size:0.9rem; color:#D6DADD;
+  }
+  @media (max-width:800px){
+    .tab-panel{grid-template-columns:1fr;}
+  }
+
+  /* ---------- INNOVATION ---------- */
+  .innovation{background:var(--paper-2); padding:100px 0;}
+  .innov-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .innov-copy p{color:var(--text-soft); margin-bottom:16px; max-width:52ch;}
+  .innov-list{margin-top:26px; display:flex; flex-direction:column; gap:18px;}
+  .innov-item{padding-left:16px; border-left:2px solid var(--gold);}
+  .innov-item h4{font-size:1rem; margin-bottom:4px;}
+  .innov-item p{font-size:0.88rem; color:var(--text-soft); max-width:50ch;}
+
+  .gauge-box{background:var(--ink); padding:44px 36px;}
+  .gauge-label{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--silver); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:18px;}
+  .gauge-track{height:14px; background:var(--ink-2); position:relative; overflow:hidden;}
+  .gauge-fill{height:100%; width:70%; background:var(--gold);}
+  .gauge-num{
+    font-family:'Oswald', sans-serif; font-weight:600; font-size:2.6rem; color:#fff; margin-top:16px;
+  }
+  .gauge-sub{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:#B7BEC4; margin-top:6px;}
+  @media (max-width:800px){.innov-grid{grid-template-columns:1fr;}}
+
+  /* ---------- BLADE FINDER ---------- */
+  .finder{background:var(--ink); color:#fff; padding:100px 0 110px;}
+  .finder .eyebrow{color:var(--silver);}
+  .finder .section-head h2{color:#fff;}
+  .finder-box{
+    background:var(--ink-2); border:1px solid var(--line-dark);
+    padding:44px; max-width:760px;
+  }
+  .finder-steps{
+    display:flex; gap:6px; margin-bottom:36px; font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--silver);
+  }
+  .finder-steps span{padding:4px 0; flex:1; border-bottom:2px solid var(--line-dark);}
+  .finder-steps span.active{color:#fff; border-color:var(--red);}
+  .finder-steps span.done{color:var(--gold); border-color:var(--gold);}
+  .finder-step{display:none;}
+  .finder-step.active{display:block;}
+  .finder-step h3{color:#fff; font-size:1.3rem; margin-bottom:22px;}
+  .option-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:26px;}
+  .option{
+    padding:16px 12px; background:var(--ink); border:1px solid var(--line-dark);
+    cursor:pointer; font-family:'IBM Plex Mono', monospace; font-size:0.8rem; text-align:center;
+    color:#D6DADD; transition:border-color 0.15s, color 0.15s;
+  }
+  .option:hover{border-color:var(--silver);}
+  .option.selected{border-color:var(--red); color:#fff; background:#2A1815;}
+  @media (max-width:560px){.option-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .finder-input{
+    width:100%; padding:13px 14px; background:var(--ink); border:1px solid var(--line-dark);
+    color:#fff; font-family:'IBM Plex Sans', sans-serif; font-size:0.92rem; margin-bottom:14px;
+  }
+  .finder-input::placeholder{color:#6C747A;}
+  .finder-nav{display:flex; justify-content:space-between; margin-top:8px;}
+
+  .finder-summary{
+    background:var(--ink); border:1px solid var(--line-dark); padding:24px; margin-bottom:22px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:#D6DADD;
+  }
+  .finder-summary div{padding:6px 0; border-bottom:1px solid var(--line-dark); display:flex; justify-content:space-between; gap:16px;}
+  .finder-summary div:last-child{border-bottom:0;}
+  .finder-summary span:first-child{color:#8B949B;}
+
+  /* ---------- CBG USA CONTACT ---------- */
+  .usa{background:var(--paper); padding:100px 0;}
+  .usa-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .usa-card{
+    background:var(--paper-2); border:1px solid var(--line); padding:44px;
+  }
+  .usa-card .eyebrow{margin-bottom:10px;}
+  .usa-card h3{font-size:1.7rem; margin-bottom:6px;}
+  .usa-role{font-family:'IBM Plex Mono', monospace; font-size:0.8rem; color:var(--text-soft); margin-bottom:26px;}
+  .usa-detail{display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid var(--line); font-size:0.92rem;}
+  .usa-detail span:first-child{color:var(--text-soft); font-family:'IBM Plex Mono', monospace; font-size:0.76rem; text-transform:uppercase;}
+  .usa-ctas{display:flex; flex-direction:column; gap:12px; margin-top:28px;}
+  .usa-ctas .btn{justify-content:center;}
+
+  .usa-form label{display:block; font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-soft); margin-bottom:6px;}
+  .usa-form input, .usa-form select, .usa-form textarea{
+    width:100%; padding:12px 14px; border:1px solid var(--line); background:#fff;
+    font-family:'IBM Plex Sans', sans-serif; font-size:0.92rem; margin-bottom:18px;
+  }
+  .usa-form textarea{resize:vertical; min-height:100px;}
+  @media (max-width:900px){.usa-grid{grid-template-columns:1fr;}}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--ink); color:#fff; padding:90px 0;}
+  .about .wrap{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .about h2{color:#fff;}
+  .about p{color:#B7BEC4; margin-bottom:16px; max-width:56ch;}
+  .about-facts{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line-dark);}
+  .about-fact{display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line-dark); font-family:'IBM Plex Mono', monospace; font-size:0.85rem;}
+  .about-fact span:first-child{color:#8B949B;}
+  @media (max-width:900px){.about .wrap{grid-template-columns:1fr;}}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink-2); color:#8B949B; padding:50px 0 30px;}
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; padding-bottom:30px; border-bottom:1px solid var(--line-dark);}
+  .footer-col h4{color:#fff; font-size:0.78rem; margin-bottom:14px;}
+  .footer-col a{display:block; font-size:0.82rem; padding:4px 0; color:#9FA6AC;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{display:flex; justify-content:space-between; padding-top:22px; font-family:'IBM Plex Mono', monospace; font-size:0.7rem; flex-wrap:wrap; gap:10px;}
+
+  .cta-strip{background:var(--red); color:#fff; padding:54px 0; text-align:center;}
+  .cta-strip h2{color:#fff; font-size:clamp(1.5rem,3vw,2.1rem); margin-bottom:22px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <span class="grades">
+        <span style="background:var(--red)"></span>
+        <span style="background:var(--blue)"></span>
+        <span style="background:var(--gold)"></span>
+        <span style="background:var(--silver)"></span>
+      </span>
+      CBG ACCIAI <small>&nbsp;USA</small>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links" id="navLinks">
+      <a href="#products">Products</a>
+      <a href="#industries">Industries</a>
+      <a href="#why">Why CBG</a>
+      <a href="#technical">Technical</a>
+      <a href="#about">About</a>
+      <a href="#usa">CBG USA</a>
+      <a href="#usa" class="btn btn-red">Request a Quote</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero cut-bottom">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow hero-eyebrow">CBG ACCIAI — CARONNO PERTUSELLA, ITALY → U.S. DISTRIBUTION</div>
+      <h1>Precision blades,<br><em>engineered in Italy.</em><br>Supported in the U.S.</h1>
+      <p class="lede">Nearly a century of blade manufacturing from Swedish steel — now with a U.S. front door for quotes, application support, and inventory. Talk to a person in the country you're cutting in.</p>
+      <div class="hero-ctas">
+        <a href="#usa" class="btn btn-red">Request a Quote</a>
+        <a href="#finder" class="btn btn-outline">Find the Right Blade</a>
+      </div>
+    </div>
+    <div class="blade-graphic">
+      <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,20 400,60 400,120 20,90" fill="#B33A2E"/>
+        <polygon points="20,90 400,120 400,150 20,130" fill="#2E5C8A"/>
+        <polygon points="20,130 400,150 400,175 20,165" fill="#24272A"/>
+        <polygon points="20,165 400,175 400,200 20,195" fill="#A87A2C"/>
+        <polygon points="20,195 400,200 400,225 20,225" fill="#8B949B"/>
+        <polygon points="20,225 400,225 400,250 20,255" fill="#D8D6C9"/>
+        <polygon points="20,255 400,250 410,260 20,285" fill="#F4F4EF"/>
+      </svg>
+      <div class="blade-caption">
+        <span>BLADE CROSS-SECTION</span>
+        <span>SIX GRADE SYSTEM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATIONS -->
+<section class="apps" id="industries">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Where CBG blades work</div>
+      <h2>Five industries. One manufacturer.</h2>
+    </div>
+  </div>
+  <div class="apps-grid">
+    <div class="app-card">
+      <div><div class="swatch" style="background:var(--blue)"></div><h3>Printing &amp; Converting</h3><p>Doctor blades, coater blades, creping blades, slitting blades, back-up blades — flexo and rotogravure.</p></div>
+      <div class="num">01</div>
+    </div>
+    <div class="app-card">
+      <div><div class="swatch" style="background:var(--gold)"></div><h3>Wood</h3><p>Narrow and wide band-saw blades, including carbide-tipped RAZORBIDE for extended blade life.</p></div>
+      <div class="num">02</div>
+    </div>
+    <div class="app-card">
+      <div><div class="swatch" style="background:var(--red)"></div><h3>Food Processing</h3><p>Meat band-saw blades, grinder and mincer plates, and knives — Salvador, Salvinox, Tornado &amp; DorBlade.</p></div>
+      <div class="num">03</div>
+    </div>
+    <div class="app-card">
+      <div><div class="swatch" style="background:var(--silver)"></div><h3>Stone</h3><p>Blades engineered for stone-cutting and processing applications.</p></div>
+      <div class="num">04</div>
+    </div>
+    <div class="app-card">
+      <div><div class="swatch" style="background:var(--black)"></div><h3>Industrial &amp; Recycling</h3><p>Foam and plastics cutting, hardened strip steel, and blades for recycling operations.</p></div>
+      <div class="num">05</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats" id="why">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div><div class="stat-num">~100</div><div class="stat-label">Years manufacturing</div></div>
+      <div><div class="stat-num">€61M</div><div class="stat-label">Group turnover</div></div>
+      <div><div class="stat-num">90,000+</div><div class="stat-label">SKUs produced</div></div>
+      <div><div class="stat-num">70%+</div><div class="stat-label">Sales outside Italy</div></div>
+      <div><div class="stat-num">269</div><div class="stat-label">Group employees</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEEL GRADES -->
+<section class="grades-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The grade system</div>
+      <h2>Six steel grades, built for what you're cutting.</h2>
+    </div>
+    <div class="grades-list">
+      <div class="grade-row">
+        <div class="grade-tag"><span class="grade-chip" style="background:var(--red)"></span><span class="grade-name">Red</span></div>
+        <div class="grade-desc">Optimized for wear resistance in high-abrasion runs.</div>
+        <div class="grade-desc mono" style="color:var(--text-soft)">Best for: long runs, abrasive substrates</div>
+      </div>
+      <div class="grade-row">
+        <div class="grade-tag"><span class="grade-chip" style="background:var(--blue)"></span><span class="grade-name">Blue</span></div>
+        <div class="grade-desc">Built for corrosion resistance in wet or reactive environments.</div>
+        <div class="grade-desc mono" style="color:var(--text-soft)">Best for: water-based inks, humid lines</div>
+      </div>
+      <div class="grade-row">
+        <div class="grade-tag"><span class="grade-chip" style="background:var(--black)"></span><span class="grade-name">Black</span></div>
+        <div class="grade-desc">General-purpose grade for standard production conditions.</div>
+        <div class="grade-desc mono" style="color:var(--text-soft)">Best for: everyday runs</div>
+      </div>
+      <div class="grade-row">
+        <div class="grade-tag"><span class="grade-chip" style="background:var(--gold)"></span><span class="grade-name">Gold</span></div>
+        <div class="grade-desc">Tuned for abrasive ink systems and pigment-heavy formulations.</div>
+        <div class="grade-desc mono" style="color:var(--text-soft)">Best for: abrasive inks</div>
+      </div>
+      <div class="grade-row">
+        <div class="grade-tag"><span class="grade-chip" style="background:var(--silver)"></span><span class="grade-name">Silver</span></div>
+        <div class="grade-desc">Balanced hardness and flexibility for mixed-condition runs.</div>
+        <div class="grade-desc mono" style="color:var(--text-soft)">Best for: variable substrates</div>
+      </div>
+      <div class="grade-row">
+        <div class="grade-tag"><span class="grade-chip" style="background:var(--white-lbl)"></span><span class="grade-name">White Label</span></div>
+        <div class="grade-desc">Specified for particular water-based ink chemistries.</div>
+        <div class="grade-desc mono" style="color:var(--text-soft)">Best for: water-based ink lines</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEAT PROCESSING BRANDS -->
+<section class="grades-section" style="background:var(--paper-2); padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Meat processing division</div>
+      <h2>Four brands, one CBG facility.</h2>
+      <p style="color:var(--text-soft); margin-top:14px; max-width:60ch;">CBG's meat-processing blades are produced under four brands built specifically for butcher and processing-plant equipment, with roughly 40 years of manufacturing history behind them.</p>
+    </div>
+    <div class="apps-grid" style="grid-template-columns:repeat(4,1fr);">
+      <div class="app-card" style="min-height:170px;">
+        <div><div class="swatch" style="background:var(--red)"></div><h3>Salvador</h3><p>Butcher band-saw blades — welded or in coils.</p></div>
+      </div>
+      <div class="app-card" style="min-height:170px;">
+        <div><div class="swatch" style="background:var(--blue)"></div><h3>Salvinox</h3><p>Stainless mincer &amp; grinder plates and knives.</p></div>
+      </div>
+      <div class="app-card" style="min-height:170px;">
+        <div><div class="swatch" style="background:var(--gold)"></div><h3>Tornado</h3><p>Bone-saw ring blades for fresh, bone-in cuts.</p></div>
+      </div>
+      <div class="app-card" style="min-height:170px;">
+        <div><div class="swatch" style="background:var(--silver)"></div><h3>DorBlade</h3><p>Additional band-saw &amp; ring-blade profiles.</p></div>
+      </div>
+    </div>
+    <div style="margin-top:24px; padding:18px 22px; background:var(--red-ink); border-left:3px solid var(--red); max-width:70ch;">
+      <p style="font-size:0.9rem; color:var(--text);"><strong>Buy genuine.</strong> Salvador and Salvinox products have been counterfeited in some markets. CBG USA is the authorized channel for genuine product, backed by manufacturer warranty and support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products cut-both" id="products">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Product lines</div>
+      <h2>Built by vertical, not by catalog page.</h2>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="print">Printing &amp; Converting</button>
+      <button class="tab-btn" data-tab="wood">Wood</button>
+      <button class="tab-btn" data-tab="food">Food Processing</button>
+      <button class="tab-btn" data-tab="other">Stone / Foam / Recycling</button>
+    </div>
+    <div class="tab-panels">
+      <div class="tab-panel active" id="tab-print">
+        <div>
+          <h3>Doctor blades &amp; coater blades</h3>
+          <p>For flexographic and rotogravure printing — including proprietary profiles engineered to reduce cracking and extend cylinder life.</p>
+          <div class="product-lines">
+            <div class="product-line">Doctor blades — flexo &amp; gravure</div>
+            <div class="product-line">Coater blades</div>
+            <div class="product-line">Creping blades</div>
+            <div class="product-line">Slitting razor blades</div>
+            <div class="product-line">Back-up blades &amp; specialty profiles</div>
+          </div>
+        </div>
+        <div>
+          <div class="spec-list">
+            <div class="spec-row"><span>Steel origin</span><span>Sweden</span></div>
+            <div class="spec-row"><span>Available grades</span><span>Red / Blue / Black / Gold / Silver / White</span></div>
+            <div class="spec-row"><span>Proprietary profiles</span><span>WING LAMELLA, Mirror Edge, VARI-THICK</span></div>
+            <div class="spec-row"><span>Patent history</span><span>Pre-honed curved-profile technology (incl. U.S. filings)</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-wood">
+        <div>
+          <h3>Band-saw blades</h3>
+          <p>Narrow and wide band-saw blades, including the carbide-tipped RAZORBIDE line built for extended service intervals.</p>
+          <div class="product-lines">
+            <div class="product-line">Narrow band-saw blades</div>
+            <div class="product-line">Wide band-saw blades</div>
+            <div class="product-line">RAZORBIDE carbide-tipped line</div>
+          </div>
+        </div>
+        <div>
+          <div class="spec-list">
+            <div class="spec-row"><span>Time to first maintenance</span><span>Up to 100 hours</span></div>
+            <div class="spec-row"><span>Total blade life</span><span>Approx. 300 hours</span></div>
+            <div class="spec-row"><span>Tip material</span><span>Carbide</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-food">
+        <div>
+          <h3>Meat processing</h3>
+          <p>Butcher band-saw blades, stainless mincer/grinder plates, knives, and bone-saw ring blades — produced at CBG's dedicated meat-processing facility under four established brands, fitted to the grinder systems U.S. plants already run.</p>
+          <div class="product-lines">
+            <div class="product-line">Butcher band-saw blades — welded or supplied in coils</div>
+            <div class="product-line">Stainless steel mincer / grinder plates &amp; knives</div>
+            <div class="product-line">Bone-saw ring blades — fresh meat, bone-in</div>
+            <div class="product-line">"Curve box" knives — stainless, for frozen meat</div>
+          </div>
+        </div>
+        <div>
+          <div class="spec-list">
+            <div class="spec-row"><span>Brands</span><span>Salvador · Salvinox · Tornado · DorBlade</span></div>
+            <div class="spec-row"><span>System compatibility</span><span>Hobart · Unger · Enterprise</span></div>
+            <div class="spec-row"><span>Blade material</span><span>Carbon steel, hardened tooth tips</span></div>
+            <div class="spec-row"><span>Manufacturing history</span><span>~40 years, made in Italy</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-other">
+        <div>
+          <h3>Stone, foam &amp; recycling</h3>
+          <p>Blades for stone processing, foam and plastics cutting, hardened strip steel, and one of the group's newer growth areas — recycling.</p>
+          <div class="product-lines">
+            <div class="product-line">Stone-cutting blades</div>
+            <div class="product-line">Foam / plastics cutting blades</div>
+            <div class="product-line">Hardened &amp; tempered strip steel</div>
+            <div class="product-line">Recycling-line blades</div>
+          </div>
+        </div>
+        <div>
+          <div class="spec-list">
+            <div class="spec-row"><span>Growth focus</span><span>Recycling — expanding vertical</span></div>
+            <div class="spec-row"><span>Material form</span><span>Strip steel, hardened &amp; tempered</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INNOVATION -->
+<section class="innovation" id="technical">
+  <div class="wrap innov-grid">
+    <div class="innov-copy">
+      <div class="eyebrow">Technical &amp; IP</div>
+      <h2>Engineering behind the edge.</h2>
+      <p>CBG's product line includes patented and proprietary geometries built to solve specific failure modes in high-speed printing and converting — not just "a sharper blade."</p>
+      <div class="innov-list">
+        <div class="innov-item">
+          <h4>VARI-THICK profile</h4>
+          <p>A variable-thickness design intended to reduce cracking at cylinder extremities.</p>
+        </div>
+        <div class="innov-item">
+          <h4>WING LAMELLA &amp; Mirror Edge</h4>
+          <p>Specialty profiles and coated-blade options for specific print conditions.</p>
+        </div>
+        <div class="innov-item">
+          <h4>Patented curved-profile technology</h4>
+          <p>Pre-honed curved-profile doctor blade IP, including U.S. patent filings.</p>
+        </div>
+      </div>
+    </div>
+    <div class="gauge-box">
+      <div class="gauge-label">VARI-THICK — cracking reduction</div>
+      <div class="gauge-track"><div class="gauge-fill"></div></div>
+      <div class="gauge-num">70%</div>
+      <div class="gauge-sub">Reduction in cracking at cylinder extremities, vs. standard profile</div>
+    </div>
+  </div>
+</section>
+
+<!-- BLADE FINDER -->
+<section class="finder" id="finder">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Blade Finder</div>
+      <h2>Tell us what you're cutting. We'll route it to the right person.</h2>
+    </div>
+    <div class="finder-box">
+      <div class="finder-steps">
+        <span class="active" data-step-label="1">01 — Material</span>
+        <span data-step-label="2">02 — Equipment</span>
+        <span data-step-label="3">03 — Problem</span>
+        <span data-step-label="4">04 — Contact</span>
+      </div>
+
+      <div class="finder-step active" data-step="1">
+        <h3>What are you cutting?</h3>
+        <div class="option-grid" id="materialOptions">
+          <div class="option" data-value="Printing / Film">Printing / Film</div>
+          <div class="option" data-value="Wood">Wood</div>
+          <div class="option" data-value="Meat / Food">Meat / Food</div>
+          <div class="option" data-value="Stone">Stone</div>
+          <div class="option" data-value="Foam / Plastic">Foam / Plastic</div>
+          <div class="option" data-value="Recycling">Recycling</div>
+        </div>
+        <div class="finder-nav"><span></span><button class="btn btn-red" onclick="finderNext(1)">Next</button></div>
+      </div>
+
+      <div class="finder-step" data-step="2">
+        <h3>What equipment &amp; current blade are you running?</h3>
+        <input class="finder-input" id="equipmentInput" placeholder="Equipment / machine make &amp; model">
+        <input class="finder-input" id="dimsInput" placeholder="Current blade dimensions (if known)">
+        <div class="finder-nav"><button class="btn btn-outline" onclick="finderBack(2)">Back</button><button class="btn btn-red" onclick="finderNext(2)">Next</button></div>
+      </div>
+
+      <div class="finder-step" data-step="3">
+        <h3>What problem are you trying to solve?</h3>
+        <div class="option-grid" id="problemOptions">
+          <div class="option" data-value="Blade life">Blade life</div>
+          <div class="option" data-value="Print quality">Print quality</div>
+          <div class="option" data-value="Corrosion">Corrosion</div>
+          <div class="option" data-value="Breakage">Breakage</div>
+          <div class="option" data-value="Cost">Cost</div>
+          <div class="option" data-value="Cutting quality">Cutting quality</div>
+        </div>
+        <div class="finder-nav"><button class="btn btn-outline" onclick="finderBack(3)">Back</button><button class="btn btn-red" onclick="finderNext(3)">Next</button></div>
+      </div>
+
+      <div class="finder-step" data-step="4">
+        <h3>Where should we send this?</h3>
+        <input class="finder-input" id="nameInput" placeholder="Full name">
+        <input class="finder-input" id="companyInput" placeholder="Company">
+        <input class="finder-input" id="emailInput" type="email" placeholder="Email">
+        <div class="finder-nav"><button class="btn btn-outline" onclick="finderBack(4)">Back</button><button class="btn btn-red" onclick="finderShowSummary()">Review &amp; Send</button></div>
+      </div>
+
+      <div class="finder-step" data-step="5">
+        <h3>Ready to send to CBG USA</h3>
+        <div class="finder-summary" id="finderSummary"></div>
+        <div class="finder-nav"><button class="btn btn-outline" onclick="finderBack(5)">Back</button><a class="btn btn-red" id="finderSendBtn" href="#">Send to CBG USA</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CBG USA / CONTACT -->
+<section class="usa" id="usa">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">CBG Acciai USA</div>
+      <h2>Official U.S. distribution &amp; sales.</h2>
+    </div>
+    <div class="usa-grid">
+      <div class="usa-card">
+        <div class="eyebrow">Your U.S. contact</div>
+        <h3>Paul Dean</h3>
+        <div class="usa-role">President — CBG Acciai USA</div>
+        <div class="usa-detail"><span>Phone</span><span>[U.S. Phone Number]</span></div>
+        <div class="usa-detail"><span>Email</span><span>[paul@cbgacciaiusa.com]</span></div>
+        <div class="usa-detail"><span>Warehouse</span><span>[U.S. Location — TBD]</span></div>
+        <div class="usa-ctas">
+          <a class="btn btn-red" href="#usaForm">Request a Quote</a>
+          <a class="btn btn-outline" style="color:var(--ink); border-color:var(--ink)" href="#usaForm">Ask an Application Question</a>
+          <a class="btn btn-outline" style="color:var(--ink); border-color:var(--ink)" href="#finder">Find the Right Blade</a>
+        </div>
+      </div>
+
+      <div class="usa-card usa-form" id="usaForm">
+        <div class="eyebrow">Send a message</div>
+        <h3 style="font-size:1.3rem; margin-bottom:24px;">Request a quote</h3>
+        <form id="quoteForm">
+          <label for="qName">Name</label>
+          <input id="qName" required>
+          <label for="qCompany">Company</label>
+          <input id="qCompany" required>
+          <label for="qEmail">Email</label>
+          <input id="qEmail" type="email" required>
+          <label for="qMessage">What do you need?</label>
+          <textarea id="qMessage" placeholder="Application, blade type, dimensions, quantity..."></textarea>
+          <button type="submit" class="btn btn-dark">Send Request</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow" style="color:var(--silver)">About CBG Acciai</div>
+      <h2>Nearly a century of blade manufacturing.</h2>
+      <p>Headquartered in Caronno Pertusella, near Milan, CBG Acciai manufactures high-precision blades from Swedish steel, distributed through a global network of specialized agents and distributors.</p>
+      <p>The company was majority acquired in 2022 by Azimut Libera Impresa and HLD, with the Filippini Fantoni family retaining a stake and remaining involved. HLD has positioned CBG as a buy-and-build platform in a niche market growing an estimated 5–7% per year.</p>
+    </div>
+    <div class="about-facts">
+      <div class="about-fact"><span>Headquarters</span><span>Caronno Pertusella, Italy</span></div>
+      <div class="about-fact"><span>Chairman / CEO</span><span>Uberto Filippini</span></div>
+      <div class="about-fact"><span>Ownership</span><span>Azimut Libera Impresa &amp; HLD (2022, majority)</span></div>
+      <div class="about-fact"><span>Production / stock space</span><span>~16,000 m²</span></div>
+      <div class="about-fact"><span>Distributors &amp; agents</span><span>95 specialized partners</span></div>
+      <div class="about-fact"><span>Steel source</span><span>Sweden</span></div>
+      <div class="about-fact"><span>Meat-processing facility</span><span>Riese Pio X, Treviso — Salvador / Salvinox / Tornado / DorBlade</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div class="wrap">
+    <h2>Buying from Italy shouldn't feel like buying from Italy.</h2>
+    <a href="#usa" class="btn btn-dark" style="background:#fff; color:var(--red);">Talk to CBG USA</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>PRODUCTS</h4>
+        <a href="#products">Printing &amp; Converting</a>
+        <a href="#products">Wood</a>
+        <a href="#products">Food Processing</a>
+        <a href="#products">Stone / Foam / Recycling</a>
+      </div>
+      <div class="footer-col">
+        <h4>COMPANY</h4>
+        <a href="#about">About CBG</a>
+        <a href="#why">By the Numbers</a>
+        <a href="#technical">Technical &amp; IP</a>
+      </div>
+      <div class="footer-col">
+        <h4>CBG USA</h4>
+        <a href="#usa">Request a Quote</a>
+        <a href="#finder">Blade Finder</a>
+        <a href="#usa">Contact Paul Dean</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© CBG ACCIAI USA — V1 SITE DRAFT</span>
+      <span>CARONNO PERTUSELLA, ITALY · U.S. DISTRIBUTION</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // product tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // option select (single-select per group)
+  function wireOptions(containerId){
+    const container = document.getElementById(containerId);
+    container.querySelectorAll('.option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        container.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+      });
+    });
+  }
+  wireOptions('materialOptions');
+  wireOptions('problemOptions');
+
+  // finder step nav
+  function showStep(n){
+    document.querySelectorAll('.finder-step').forEach(s => s.classList.remove('active'));
+    document.querySelector('.finder-step[data-step="'+n+'"]').classList.add('active');
+    document.querySelectorAll('.finder-steps span').forEach((s,i) => {
+      s.classList.remove('active','done');
+      if(i+1 < n) s.classList.add('done');
+      if(i+1 === n && n<=4) s.classList.add('active');
+    });
+  }
+  function finderNext(current){ showStep(current+1); }
+  function finderBack(current){ showStep(Math.max(1,current-1)); }
+
+  function finderShowSummary(){
+    const material = document.querySelector('#materialOptions .option.selected');
+    const problem = document.querySelector('#problemOptions .option.selected');
+    const equipment = document.getElementById('equipmentInput').value || '—';
+    const dims = document.getElementById('dimsInput').value || '—';
+    const name = document.getElementById('nameInput').value || '—';
+    const company = document.getElementById('companyInput').value || '—';
+    const email = document.getElementById('emailInput').value || '—';
+
+    const summary = document.getElementById('finderSummary');
+    summary.innerHTML = `
+      <div><span>Material</span><span>${material ? material.dataset.value : '—'}</span></div>
+      <div><span>Equipment</span><span>${equipment}</span></div>
+      <div><span>Blade dimensions</span><span>${dims}</span></div>
+      <div><span>Problem to solve</span><span>${problem ? problem.dataset.value : '—'}</span></div>
+      <div><span>Name</span><span>${name}</span></div>
+      <div><span>Company</span><span>${company}</span></div>
+      <div><span>Email</span><span>${email}</span></div>
+    `;
+
+    const subject = encodeURIComponent('Blade Finder request — ' + company);
+    const body = encodeURIComponent(
+      `Material: ${material ? material.dataset.value : '—'}\nEquipment: ${equipment}\nBlade dimensions: ${dims}\nProblem to solve: ${problem ? problem.dataset.value : '—'}\nName: ${name}\nCompany: ${company}\nEmail: ${email}`
+    );
+    document.getElementById('finderSendBtn').href = `mailto:paul@cbgacciaiusa.com?subject=${subject}&body=${body}`;
+
+    showStep(5);
+  }
+
+  // quote form (no backend yet — mailto fallback for V1)
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('qName').value;
+    const company = document.getElementById('qCompany').value;
+    const email = document.getElementById('qEmail').value;
+    const message = document.getElementById('qMessage').value;
+    const subject = encodeURIComponent('Quote request — ' + company);
+    const body = encodeURIComponent(`Name: ${name}\nCompany: ${company}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:paul@cbgacciaiusa.com?subject=${subject}&body=${body}`;
+  });
+</script>
+
+</body>
+</html>
