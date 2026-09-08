@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBG-USA Acciai | Precision Industrial Blades</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans" x-data="{ currentTab: 'home', formStep: 1, matcherLine: '', machineSpecs: '', userName: '', userCompany: '', userEmail: '', userPhone: '' }">
+
+    <!-- Header Alert Banner -->
+    <div class="bg-amber-50 border-b border-amber-200 py-2.5 px-4 text-center text-sm sm:text-base text-amber-900 font-medium">
+        <span class="inline-flex items-center gap-1.5">
+            ⚠️ <strong>BUY GENUINE:</strong> Salvador and Salvinox products have been counterfeited in some markets. C.B.G. USA INC is the only authorized channel for genuine manufacturer-warranted products.
+        </span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-baseline gap-2 cursor-pointer" @click="currentTab = 'home'">
+                <span class="text-2xl font-black tracking-tight text-white">C.B.G. USA <span class="text-red-500">ACCIAI</span></span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8 font-medium">
+                <button @click="currentTab = 'home'" :class="currentTab === 'home' ? 'text-red-500' : 'text-slate-300 hover:text-white'" class="transition-colors py-2">Home</button>
+                <button @click="currentTab = 'meat-saws'" :class="currentTab === 'meat-saws' ? 'text-red-500' : 'text-slate-300 hover:text-white'" class="transition-colors py-2">Meat Bandsaws</button>
+                <button @click="currentTab = 'wood-saws'" :class="currentTab === 'wood-saws' ? 'text-red-500' : 'text-slate-300 hover:text-white'" class="transition-colors py-2">Wood Bandsaws</button>
+                <button @click="currentTab = 'grinders'" :class="currentTab === 'grinders' ? 'text-red-500' : 'text-slate-300 hover:text-white'" class="transition-colors py-2">Grinder Plates & Knives</button>
+                <a href="#blade-matcher" @click="currentTab = 'home'; setTimeout(() => document.getElementById('blade-matcher').scrollIntoView({behavior: 'smooth'}), 100)" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md font-semibold text-sm transition-all shadow-sm">Blade Matcher</a>
+            </nav>
+            <!-- Mobile Menu Indicator (Simplified for quick multi-tab usage) -->
+            <div class="md:hidden flex gap-2">
+                <button @click="currentTab = 'home'" class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-300">Menu</button>
+            </div>
+        </div>
+        <!-- Mobile Nav Tabs Panel -->
+        <div class="md:hidden bg-slate-800 border-t border-slate-700 px-4 py-2 flex flex-wrap gap-3 justify-center text-xs">
+            <button @click="currentTab = 'home'" :class="currentTab === 'home' ? 'text-red-400 font-bold' : 'text-slate-300'">Home</button>
+            <button @click="currentTab = 'meat-saws'" :class="currentTab === 'meat-saws' ? 'text-red-400 font-bold' : 'text-slate-300'">Meat Saws</button>
+            <button @click="currentTab = 'wood-saws'" :class="currentTab === 'wood-saws' ? 'text-red-400 font-bold' : 'text-slate-300'">Wood Saws</button>
+            <button @click="currentTab = 'grinders'" :class="currentTab === 'grinders' ? 'text-red-400 font-bold' : 'text-slate-300'">Grinders</button>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- ================= HOME TAB ================= -->
+        <div x-show="currentTab === 'home'" x-transition class="space-y-16">
+            <!-- Hero Block -->
+            <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl text-white p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="max-w-2xl space-y-6">
+                    <span class="bg-red-600/20 text-red-400 font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-red-500/30">Official USA Distribution</span>
+                    <h1 class="text-3xl md:text-5xl font-black tracking-tight leading-none">Precision Blades, <span class="text-red-500">Engineered in Italy.</span><br>Backed stateside.</h1>
+                    <p class="text-slate-300 text-lg leading-relaxed">Nearly a century of premium cutting tool heritage built on hardened, high-fatigue Swedish steel. C.B.G. USA INC brings factory-direct logistical infrastructure, absolute counterfeit verification, and technical procurement support straight to North American operations.</p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button @click="currentTab = 'meat-saws'" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-lg shadow transition-all">Explore Product Lines</button>
+                        <a href="#blade-matcher" class="border border-slate-600 hover:border-slate-400 text-slate-200 font-semibold px-6 py-3 rounded-lg transition-all">Request a Corporate Quote</a>
+                    </div>
+                </div>
+                <div class="w-full md:w-80 bg-slate-800/50 border border-slate-700 rounded-xl p-6 space-y-4">
+                    <h3 class="font-bold text-slate-400 uppercase text-xs tracking-wider">U.S. Executive Office</h3>
+                    <div class="space-y-1">
+                        <p class="text-lg font-bold text-white">Paul Dean</p>
+                        <p class="text-sm text-red-400 font-medium">CEO — USA</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-700/60 text-sm space-y-2 text-slate-300">
+                        <p class="flex items-center gap-2">✉️ <a href="mailto:Paul@CBG-USA.com" class="text-red-400 hover:underline">Paul@CBG-USA.com</a></p>
+                        <p class="text-xs text-slate-400 leading-snug">🏢 <strong>C.B.G. USA INC</strong><br>66 WHITE ST STE 501<br>NEW YORK NY 10013</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Three Core Product Grid Panels -->
+            <div class="space-y-6">
+                <div class="text-center max-w-xl mx-auto space-y-2">
+                    <h2 class="text-2xl md:text-3xl font-black tracking-tight">Authorized North American Product Lines</h2>
+                    <p class="text-slate-600 text-sm md:text-base">We distribute three specialized heavy-duty cutting categories built exclusively for premium commercial output.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Meat Bandsaws Card -->
+                    <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                        <div class="space-y-4">
+                            <div class="text-3xl">🥩</div>
+                            <h3 class="text-xl font-bold tracking-tight">Meat Band-Saws</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Hardened, industrial bone-saw bands and ring blades manufactured specifically under the premium <strong>Salvador</strong>, <strong>Tornado</strong>, and <strong>DorBlade</strong> brand lines.</p>
+                        </div>
+                        <button @click="currentTab = 'meat-saws'" class="mt-6 w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-medium py-2 rounded text-sm transition-colors">View Specifications &rarr;</button>
+                    </div>
+                    <!-- Wood Bandsaws Card -->
+                    <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                        <div class="space-y-4">
+                            <div class="text-3xl">🪵</div>
+                            <h3 class="text-xl font-bold tracking-tight">Wood Band-Saws</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Narrow and wide industrial logging profiles, including heavy-duty carbide-tipped <strong>RAZORBIDE</strong> blades delivering up to 300 total production service hours.</p>
+                        </div>
+                        <button @click="currentTab = 'wood-saws'" class="mt-6 w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-medium py-2 rounded text-sm transition-colors">View Specifications &rarr;</button>
+                    </div>
+                    <!-- Mincer/Grinder Card -->
+                    <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                        <div class="space-y-4">
+                            <div class="text-3xl">⚙️</div>
+                            <h3 class="text-xl font-bold tracking-tight">Grinder Plates & Knives</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Genuine Italian-crafted <strong>Salvinox</strong> stainless plates and hard tool-steel cutting systems built to standard Enterprise or heavy multi-stage Unger formats.</p>
+                        </div>
+                        <button @click="currentTab = 'grinders'" class="mt-6 w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-medium py-2 rounded text-sm transition-colors">View Specifications &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logistic Infrastructure section -->
+            <div class="bg-slate-100 rounded-xl p-6 md:p-8 border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold tracking-tight flex items-center gap-2 text-slate-800">🏭 Centrally Tracked Logistical Infrastructure</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">To back continuous production uptime for high-throughput North American packing plants and industrial wood shops, C.B.G. USA INC utilizes an advanced, centralized freight staging hub.</p>
+                    <div class="bg-white border border-slate-200 rounded-lg p-4 text-xs font-mono space-y-1 shadow-inner text-slate-700">
+                        <p class="font-bold text-slate-900 text-sm mb-1 uppercase tracking-wider">📦 Primary Shipping & Warehouse Depot</p>
+                        <p><strong>Facility Partner:</strong> GEODIS Logistics Hub</p>
+                        <p><strong>Physical Ingestion:</strong> 200 Tradeport Drive Suite 400</p>
+                        <p><strong>Hub City:</strong> Atlanta, GA — 30354</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wide text-slate-500">Corporate Identity & Verification</h4>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div class="bg-slate-50 p-3 rounded border border-slate-100">
+                            <span class="block text-xs text-slate-400 font-semibold uppercase">Entity Registration</span>
+                            <span class="font-bold text-slate-800">Delaware Corp</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded border border-slate-100">
+                            <span class="block text-xs text-slate-400 font-semibold uppercase">Federal Tax ID (EIN)</span>
+                            <span class="font-mono font-bold text-slate-800">32-0810178</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">C.B.G. USA INC operates as a completely registered domestic commercial vendor, allowing seamless integration with corporate automated procurement platforms, ACH accounting matrices, and internal enterprise resource records.</p>
+                </div>
+            </div>
+
+            <!-- Dynamic Interactive Multi-Step Blade Matcher Form -->
+            <div id="blade-matcher" class="bg-white border border-slate-200 rounded-2xl p-6 md:p-10 shadow-sm max-w-3xl mx-auto scroll-mt-24">
+                <div class="border-b border-slate-100 pb-6 mb-8 flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl md:text-2xl font-bold tracking-tight">Interactive U.S. Product Matcher</h2>
+                        <p class="text-slate-500 text-xs md:text-sm mt-1">Configure your industrial cutting profile to route directly to Paul Dean for verification.</p>
+                    </div>
+                    <span class="bg-slate-100 text-slate-700 font-mono font-bold text-xs px-2.5 py-1 rounded-md">Step <span x-text="formStep"></span> of 3</span>
+                </div>
+
+                <!-- Step 1: Select Vertical -->
+                <div x-show="formStep === 1" class="space-y-4">
+                    <label class="block font-bold text-sm uppercase tracking-wide text-slate-700">1. Select your target distribution line:</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <button type="button" @click="matcherLine = 'Meat Bandsaw Blades'" :class="matcherLine === 'Meat Bandsaw Blades' ? 'border-red-500 bg-red-50/50 ring-2 ring-red-500/20' : 'border-slate-200 hover:border-slate-300 bg-white'" class="border p-4 rounded-xl text-left transition-all flex flex-col justify-between h-28">
+                            <span class="text-2xl">🥩</span>
+                            <span class="font-bold text-sm block">Meat Bandsaw Blades</span>
+                        </button>
+                        <button type="button" @click="matcherLine = 'Wood Bandsaw Blades'" :class="matcherLine === 'Wood Bandsaw Blades' ? 'border-red-500 bg-red-50/50 ring-2 ring-red-500/20' : 'border-slate-200 hover:border-slate-300 bg-white'" class="border p-4 rounded-xl text-left transition-all flex flex-col justify-between h-28">
+                            <span class="text-2xl">🪵</span>
+                            <span class="font-bold text-sm block">Wood Bandsaw Blades</span>
+                        </button>
+                        <button type="button" @click="matcherLine = 'Meat Grinder Plates/Knives'" :class="matcherLine === 'Meat Grinder Plates/Knives' ? 'border-red-500 bg-red-50/50 ring-2 ring-red-500/20' : 'border-slate-200 hover:border-slate-300 bg-white'" class="border p-4 rounded-xl text-left transition-all flex flex-col justify-between h-28">
+                            <span class="text-2xl">⚙️</span>
+                            <span class="font-bold text-sm block">Grinder Plates & Knives</span>
+                        </button>
+                    </div>
+                    <div class="flex justify-end pt-4">
+                        <button type="button" :disabled="!matcherLine" @click="formStep = 2" :class="!matcherLine ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-red-600 hover:bg-red-700 text-white'" class="font-bold px-6 py-2.5 rounded-lg text-sm transition-all shadow-sm">Continue &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Machinery Brand & Dimensions -->
+                <div x-show="formStep === 2" class="space-y-5" x-transition>
+                    <div>
+                        <label class="block font-bold text-sm uppercase tracking-wide text-slate-700 mb-1">2. Input Current Machinery Model & Sizing Requirements:</label>
+                        <p class="text-slate-500 text-xs mb-3">Example: "Hobart #22 System", "Cleveland Total Unger", "Biro Band Saw Model 3334", or specific width/teeth parameters.</p>
+                        <textarea x-model="machineSpecs" placeholder="Please list the equipment brands and edge-to-edge diameters or tooth profiles you are running..." class="w-full min-h-[100px] border border-slate-300 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 bg-slate-50"></textarea>
+                    </div>
+                    <div class="flex justify-between pt-2">
+                        <button type="button" @click="formStep = 1" class="border border-slate-300 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm bg-white hover:bg-slate-50">Back</button>
+                        <button type="button" :disabled="!machineSpecs.trim()" @click="formStep = 3" :class="!machineSpecs.trim() ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-red-600 hover:bg-red-700 text-white'" class="font-bold px-6 py-2.5 rounded-lg text-sm transition-all shadow-sm">Continue &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Contact & Parse mailto -->
+                <div x-show="formStep === 3" class="space-y-4" x-transition>
+                    <label class="block font-bold text-sm uppercase tracking-wide text-slate-700">3. Corporate Procurement Contact Information:</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" x-model="userName" placeholder="Full Name" class="border border-slate-300 rounded-lg p-2.5 text-sm bg-slate-50 focus:outline-none focus:border-red-500" required>
+                        <input type="text" x-model="userCompany" placeholder="Company / Operation Name" class="border border-slate-300 rounded-lg p-2.5 text-sm bg-slate-50 focus:outline-none focus:border-red-500" required>
+                        <input type="email" x-model="userEmail" placeholder="Business Email Address" class="border border-slate-300 rounded-lg p-2.5 text-sm bg-slate-50 focus:outline-none focus:border-red-500" required>
+                        <input type="text" x-model="userPhone" placeholder="Direct Contact Phone" class="border border-slate-300 rounded-lg p-2.5 text-sm bg-slate-50 focus:outline-none focus:border-red-500">
+                    </div>
+                    <div class="flex justify-between pt-6 border-t border-slate-100 mt-6">
+                        <button type="button" @click="formStep = 2" class="border border-slate-300 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm bg-white hover:bg-slate-50">Back</button>
+                        <a :href="`mailto:Paul@CBG-USA.com?subject=CBG-USA Product Match Request: ${encodeURIComponent(matcherLine)}&body=Hello Paul,%0D%0A%0D%0AI would like to request an official distribution quote for the following specifications:%0D%0A%0D%0A- TARGET PRODUCT LINE: ${encodeURIComponent(matcherLine)}%0D%0A- MACHINERY & SIZING SPECS: ${encodeURIComponent(machineSpecs)}%0D%0A%0D%0A---%0D%0ACORPORATE POINT OF CONTACT:%0D%0A- Name: ${encodeURIComponent(userName)}%0D%0A- Company: ${encodeURIComponent(userCompany)}%0D%0A- Email: ${encodeURIComponent(userEmail)}%0D%0A- Phone: ${encodeURIComponent(userPhone)}%0D%0A%0D%0APlease let us know the pricing matrices and available stock metrics at the Geodis Atlanta hub.`"
+                           :class="(!userName || !userCompany || !userEmail) ? 'bg-slate-200 text-slate-400 cursor-not-allowed pointer-events-none' : 'bg-red-600 hover:bg-red-700 text-white'"
+                           class="font-bold px-6 py-2.5 rounded-lg text-sm transition-all shadow-sm inline-flex items-center gap-2">
+                           📧 Launch Corporate Email Request
+                        </a>
+                    </div>
+                    <p class="text-[11px] text-slate-400 text-center mt-3">Clicking the launcher button generates a structured quote array mapped perfectly into your default client targeting Paul@CBG-USA.com.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= MEAT BANDSAWS TAB ================= -->
+        <div x-show="currentTab === 'meat-saws'" x-transition class="space-y-10">
+            <div class="border-b border-slate-200 pb-4">
+                <button @click="currentTab = 'home'" class="text-sm font-semibold text-red-500 hover:underline mb-2 block">&larr; Back to Home</button>
+                <h2 class="text-3xl font-black tracking-tight text-slate-900">Meat Processing Band-Saw Blades</h2>
+                <p class="text-slate-500 text-sm mt-1">High-performance processing tools engineered at CBG's dedicated Italian facility.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-6 text-slate-700 leading-relaxed text-sm md:text-base">
+                    <p>C.B.G.'s meat-processing blades combine decades of specialized metallurgy to support industrial processing lines, heavy slaughtering configurations, and local commercial butcher stations across the U.S. market.</p>
+                    <div class="bg-white border border-slate-200 p-5 rounded-xl shadow-sm space-y-4">
+                        <h4 class="font-bold text-slate-900 text-base">Core Brand Frameworks Distributed:</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-sm">
+                            <li><strong>Salvador:</strong> Heavy-duty premium butcher band-saw blades—available in precisely welded custom loops or continuous inventory stock coils.</li>
+                            <li><strong>Tornado:</strong> Specialized bone-saw ring blades specifically tempered for cutting fresh, bone-in primals and heavy carcasses cleanly without marrow drag.</li>
+                            <li><strong>DorBlade:</strong> High-tolerance alternative band profiles engineered to fit specific European and American meat cutting splitters.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-950 text-slate-200 p-5 rounded-xl border border-slate-800 space-y-2">
+                        <h4 class="text-red-400 font-bold text-sm uppercase tracking-wide">Technical Blade Profile Settings:</h4>
+                        <p class="text-sm text-slate-300">Manufactured utilizing premium refined high-carbon tool steel backings joined with strictly hardened tooth tips. This keeps the blade flexible over high-speed flywheels while guaranteeing tooth tips stay razor sharp through frozen cuts and extreme temperature fluctuations.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm h-fit space-y-5">
+                    <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500">System Compatibility Array</h3>
+                    <p class="text-xs text-slate-600">Our loops are engineered as precise drop-in track replacements for standard processing hardware brands running in U.S. plants:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-100 text-slate-800 px-2.5 py-1 rounded text-xs font-semibold border border-slate-200">Hobart Systems</span>
+                        <span class="bg-slate-100 text-slate-800 px-2.5 py-1 rounded text-xs font-semibold border border-slate-200">Biro Industrial</span>
+                        <span class="bg-slate-100 text-slate-800 px-2.5 py-1 rounded text-xs font-semibold border border-slate-200">Berkel</span>
+                        <span class="bg-slate-100 text-slate-800 px-2.5 py-1 rounded text-xs font-semibold border border-slate-200">Butcher Boy</span>
+                    </div>
+                    <button @click="currentTab = 'home'; setTimeout(() => document.getElementById('blade-matcher').scrollIntoView({behavior: 'smooth'}), 100)" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded text-sm transition-all shadow-sm">Match a Meat Blade &rarr;</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= WOOD BANDSAWS TAB ================= -->
+        <div x-show="currentTab === 'wood-saws'" x-transition class="space-y-10">
+            <div class="border-b border-slate-200 pb-4">
+                <button @click="currentTab = 'home'" class="text-sm font-semibold text-red-500 hover:underline mb-2 block">&larr; Back to Home</button>
+                <h2 class="text-3xl font-black tracking-tight text-slate-900">Commercial & Industrial Wood Band-Saws</h2>
+                <p class="text-slate-500 text-sm mt-1">High-tolerance industrial band mills built from genuine high-fatigue Swedish strip steel.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-6 text-slate-700 text-sm md:text-base leading-relaxed">
+                    <p>Designed for multi-shift commercial lumber mills, heavy hardwood logging lines, and precision secondary manufacturing furniture woodshops. Every blade configuration focuses on absorbing continuous structural flexing stress without premature body fracturing.</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="border border-slate-200 bg-white p-4 rounded-xl shadow-sm">
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">Narrow Band-Saw Profiles</h4>
+                            <p class="text-xs text-slate-600">Perfectly suited for standard commercial workshops, custom carpentry layouts, and detailing curves under low-to-medium radial feed tension.</p>
+                        </div>
+                        <div class="border border-slate-200 bg-white p-4 rounded-xl shadow-sm">
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">Wide Band-Saw Industrial Mills</h4>
+                            <p class="text-xs text-slate-600">Built to withstand the massive hydraulic tensions and rigorous feed paces demanded by automated industrial raw logging headrig facilities.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-red-900 to-slate-900 text-white p-5 rounded-xl shadow-md border border-red-800 space-y-3">
+                        <div class="flex items-center justify-between border-b border-red-700/50 pb-2">
+                            <h4 class="font-bold text-base text-red-400 uppercase tracking-wide">🏆 Featured Technology: RAZORBIDE Line</h4>
+                            <span class="bg-red-600 text-white font-mono font-bold text-xs px-2 py-0.5 rounded">Carbide-Tipped</span>
+                        </div>
+                        <p class="text-sm text-slate-200 leading-relaxed">The RAZORBIDE platform integrates structural laser-welded carbide tips onto our classic flexible Swedish backing steel. This advanced architecture shifts your operation's processing baseline parameters completely:</p>
+                        <div class="grid grid-cols-2 gap-4 pt-1 text-center font-mono">
+                            <div class="bg-black/30 p-3 rounded border border-white/10">
+                                <span class="block text-xl md:text-2xl font-black text-red-400">100 Hrs</span>
+                                <span class="text-[10px] uppercase text-slate-400 block mt-0.5">Time to First Resharpening</span>
+                            </div>
+                            <div class="bg-black/30 p-3 rounded border border-white/10">
+                                <span class="block text-xl md:text-2xl font-black text-red-400">300 Hrs</span>
+                                <span class="text-[10px] uppercase text-slate-400 block mt-0.5">Total Rated Useful Blade Life</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm h-fit space-y-4">
+                    <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500">Logistics Optimization</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">By holding specialized raw strip dimensions inside our primary <strong>Atlanta Geodis warehouse hub</strong>, we can respond to catastrophic mill breaks and handle custom length welding with unmatched turnaround times.</p>
+                    <button @click="currentTab = 'home'; setTimeout(() => document.getElementById('blade-matcher').scrollIntoView({behavior: 'smooth'}), 100)" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded text-sm transition-all shadow-sm">Configure a Wood Saw &rarr;</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= GRINDERS TAB ================= -->
+        <div x-show="currentTab === 'grinders'" x-transition class="space-y-10">
+            <div class="border-b border-slate-200 pb-4">
+                <button @click="currentTab = 'home'" class="text-sm font-semibold text-red-500 hover:underline mb-2 block">&larr; Back to Home</button>
+                <h2 class="text-3xl font-black tracking-tight text-slate-900">Meat Mincer Plates & Knives</h2>
+                <p class="text-slate-500 text-sm mt-1">Genuine Italian-engineered Salvinox components built for high-shear accuracy.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-6 text-slate-700 text-sm md:text-base leading-relaxed">
+                    <p>Distributed strictly under the classic Italian <strong>Salvinox</strong> brand label, these elements provide industrial meat packing facilities and traditional commercial grocery counters clean cutting parameters that prevent protein smashing.</p>
+                    
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm">
+                        <div class="bg-slate-900 text-white p-3 font-bold text-sm uppercase tracking-wide">Mincer System Architectures Supported</div>
+                        <div class="p-4 space-y-4 divide-y divide-slate-100">
+                            <div class="pb-3">
+                                <h4 class="font-bold text-slate-900 text-sm">1. Enterprise Cutting Systems (Single Cut Format)</h4>
+                                <p class="text-xs text-slate-600 mt-1">The universal configuration running across typical supermarket display counters and light processing hubs. Combines a single four-blade cross-knife rotating flush against one reversible or hubbed grinding disc.</p>
+                            </div>
+                            <div class="pt-3">
+                                <h4 class="font-bold text-slate-900 text-sm">2. Unger Multi-Stage Cutting Systems (Partial / Total Formats)</h4>
+                                <p class="text-xs text-slate-600 mt-1">Engineered for large industrial volume mincing networks. Utilizes specialized ring knives outfitted with precision <strong>interchangeable/replaceable blades</strong>. This lets high-throughput meat packagers switch out dull cutting facets rapidly without throwing away structural ring chassis units.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50/60 border border-amber-200 p-4 rounded-xl text-xs md:text-sm text-amber-900 space-y-2">
+                        <p class="font-bold flex items-center gap-1">⚙️ Sizing and Maintenance Coordination Guide:</p>
+                        <p class="leading-relaxed">Salvinox components are machined to exact industry dimensions matching universal grinder hub designations—including <strong>#5, #8, #12, #22, and #32</strong> standards. To stop premature dragging or uneven wear trails, knives and plates should always be replaced as matching synchronized pairs.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm h-fit space-y-4">
+                    <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500">Machinery Adaptability</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Salvinox components are built from hardened, high-grade rustless steel to drop seamlessly into global high-capacity industrial equipment brands:</p>
+                    <ul class="list-disc pl-4 text-xs text-slate-600 space-y-1">
+                        <li><strong>Hobart Mincing Networks</strong></li>
+                        <li><strong>Cleveland Industrial Processors</strong></li>
+                        <li>Unger-Standard European Machinery</li>
+                    </ul>
+                    <button @click="currentTab = 'home'; setTimeout(() => document.getElementById('blade-matcher').scrollIntoView({behavior: 'smooth'}), 100)" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded text-sm transition-all shadow-sm">Match Grinder Parts &rarr;</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-10 mt-20 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="space-y-3">
+                <span class="text-base font-bold text-white tracking-tight">C.B.G. USA <span class="text-red-500">ACCIAI</span></span>
+                <p class="leading-relaxed text-slate-400">Authorized domestic distribution network for genuine Salvador, Salvinox, Tornado, and DorBlade industrial systems.</p>
+                <p class="text-[10px] text-slate-500">&copy; 2026 C.B.G. USA INC. All manufacturing designs origin Caronno Pertusella, Italy.</p>
+            </div>
+            <div class="space-y-2">
+                <h4 class="font-bold text-white uppercase tracking-wider text-sm">Corporate Legal Matrix</h4>
+                <p class="leading-normal">
+                    <strong>Entity:</strong> C.B.G. USA INC (Delaware Corp)<br>
+                    <strong>HQ Address:</strong> 66 WHITE ST STE 501, NEW YORK NY 10013<br>
+                    <strong>Tax ID Registration:</strong> EIN 32-0810178
+                </p>
+            </div>
+            <div class="space-y-2">
+                <h4 class="font-bold text-white uppercase tracking-wider text-sm">Primary Freight Ingestion Hub</h4>
+                <p class="leading-normal">
+                    <strong>Logistics Center:</strong> Warehouse at GEODIS<br>
+                    <strong>Shipping Address:</strong> 200 Tradeport Drive Suite 400, Atlanta, GA - 30354
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
