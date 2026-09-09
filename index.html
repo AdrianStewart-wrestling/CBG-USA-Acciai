@@ -392,7 +392,62 @@
   .foot-col p, .foot-col a{display:block; font-size:13.5px; color:var(--steel); margin-bottom:8px;}
   .foot-bottom{border-top:1px solid var(--steel-line); padding-top:24px; font-size:12.5px; color:var(--steel-dim); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
 
+  /* ===== Breadcrumb ===== */
+  .breadcrumb{font-size:12.5px; color:var(--steel-dim); margin-bottom:18px; position:relative; z-index:2;}
+  .breadcrumb a{color:var(--steel-dim); border-bottom:1px solid transparent; transition:color .15s, border-color .15s;}
+  .breadcrumb a:hover{color:var(--white); border-color:var(--forge);}
+  .breadcrumb .sep{margin:0 8px; color:var(--steel-line);}
+
+  /* ===== Inner / secondary hero (category & detail pages) ===== */
+  .inner-hero{position:relative; padding:64px 0 78px; overflow:hidden; background:var(--graphite);}
+  .inner-hero-photo{position:absolute; inset:0; clip-path:polygon(46% 0, 100% 0, 100% 100%, 34% 100%); z-index:0;}
+  .inner-hero-photo img{width:100%; height:100%; object-fit:cover;}
+  .inner-hero-photo::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(100deg, var(--graphite) 0%, rgba(16,18,20,.62) 32%, rgba(16,18,20,.12) 58%);
+  }
+  .inner-hero::before{
+    content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(circle at 82% 15%, rgba(226,72,31,.16), transparent 55%);
+  }
+  .inner-hero .wrap{position:relative; z-index:2;}
+  .inner-hero h1{font-size:clamp(2rem, 3.6vw, 2.7rem); max-width:18ch; margin-bottom:16px;}
+  .inner-hero p.lead{color:var(--steel-dim); font-size:16px; max-width:54ch; margin-bottom:28px;}
+
+  /* ===== Media frame (photo or diagram placeholder) ===== */
+  .media-frame{
+    background:linear-gradient(160deg, var(--panel), var(--panel-2));
+    border:1px solid var(--steel-line);
+    padding:26px;
+    display:flex; align-items:center; justify-content:center;
+    min-height:280px;
+  }
+  .media-frame img{max-width:100%; height:auto; display:block;}
+  .media-frame svg{width:60%; height:auto; color:var(--steel-dim);}
+
+  /* ===== Spec pages ===== */
+  .spec-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:64px; align-items:start;}
+  .spec-block{margin-bottom:36px;}
+  .spec-block h3{font-size:1.15rem; margin-bottom:14px;}
+  .spec-block p{color:var(--steel-dim); font-size:14.5px; max-width:60ch;}
+  .spec-table{width:100%; border-collapse:collapse;}
+  .spec-table tr{border-top:1px solid var(--steel-line);}
+  .spec-table tr:first-child{border-top:none;}
+  .spec-table td{padding:12px 0; font-size:14px; vertical-align:top;}
+  .spec-table td:first-child{color:var(--steel-dim); width:38%;}
+  .spec-table td:last-child{color:var(--white); font-weight:500;}
+  .compat-tags{display:flex; flex-wrap:wrap; gap:10px;}
+  .compat-tag{font-size:12.5px; padding:9px 15px; border:1px solid var(--steel-line); color:var(--steel);}
+
+  /* ===== Format hub grid (reuses line-card look) ===== */
+  .format-note{
+    background:var(--graphite); border:1px solid var(--steel-line);
+    padding:22px 26px; font-size:13.5px; color:var(--steel-dim); margin-top:40px;
+  }
+  .format-note b{color:var(--white);}
+
   @media (max-width: 880px){
+    .spec-grid{grid-template-columns:1fr;}
     .menu-toggle{display:flex;}
     nav.links{
       position:fixed; top:78px; left:0; right:0; bottom:0;
@@ -410,6 +465,7 @@
     .hero{background:var(--graphite);}
     .matcher{padding:26px;}
   }
+
 </style>
 </head>
 <body>
@@ -420,18 +476,18 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#top" class="logo"><span class="mark"></span><span class="logo-text">C.B.G. USA<br><small>ACCIAI &middot; ITALIAN CUTTING SYSTEMS</small>
+    <a href="index.html#top" class="logo"><span class="mark"></span><span class="logo-text">C.B.G. USA<br><small>ACCIAI &middot; ITALIAN CUTTING SYSTEMS</small>
       <svg class="swoosh" viewBox="0 0 140 10" preserveAspectRatio="none"><path d="M1 7 Q35 1 70 6 T139 3" stroke="var(--cyan)" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
     </span></a>
     <nav class="links" id="navLinks">
-      <a href="#lines">Product Lines</a>
-      <a href="#tech">RAZORBIDE</a>
-      <a href="#logistics">Logistics</a>
-      <a href="#matcher">Blade Matcher</a>
+      <a href="index.html#lines">Product Lines</a>
+      <a href="grinder-plates-knives.html">Grinder Systems</a>
+      <a href="index.html#tech">RAZORBIDE</a>
+      <a href="index.html#matcher">Blade Matcher</a>
       <a href="mailto:Paul@CBG-USA.com">Contact</a>
     </nav>
     <div class="nav-actions">
-      <a href="#matcher" class="btn btn-primary">Request a Quote</a>
+      <a href="index.html#matcher" class="btn btn-primary">Request a Quote</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -590,11 +646,11 @@
       <h3>Grinder Plates &amp; Knives</h3>
       <p>Genuine Italian Salvinox stainless plates and hardened tool-steel cutting systems.</p>
       <ul>
-        <li><b>Enterprise format</b> — single cross-knife &amp; disc</li>
-        <li><b>Unger multi-stage</b> — interchangeable ring knives</li>
-        <li>Sizes #5, #8, #12, #22 &amp; #32</li>
+        <li><b>Enterprise</b> — single cross-knife &amp; disc</li>
+        <li><b>Hobart Cleveland</b> — OEM-matched knives &amp; plates</li>
+        <li><b>Unger</b> — interchangeable multi-stage ring knives</li>
       </ul>
-      <a class="line-link" href="#matcher">View Specifications <span class="arrow"></span></a>
+      <a class="line-link" href="grinder-plates-knives.html">View Specifications <span class="arrow"></span></a>
       </div>
     </div>
   </div>
@@ -713,7 +769,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="#top" class="logo"><span class="mark"></span>C.B.G. USA ACCIAI</a>
+        <a href="index.html#top" class="logo"><span class="mark"></span>C.B.G. USA ACCIAI</a>
         <p>Authorized domestic distribution network for genuine Salvador, Salvinox, Tornado &amp; DorBlade industrial cutting systems. All manufacturing designs originate in Caronno Pertusella, Italy.</p>
       </div>
       <div class="foot-col">
