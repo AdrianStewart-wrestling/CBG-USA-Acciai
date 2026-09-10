@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C.B.G. USA Acciai | Precision Industrial Blades, Engineered in Italy</title>
-<meta name="description" content="C.B.G. USA INC — the only authorized North American channel for genuine Salvador, Salvinox, Tornado, and DorBlade cutting systems.">
+<title>Woodworking Consumables | Wood Band-Saws | C.B.G. USA Acciai</title>
+<meta name="description" content="Stellite rods, grinding wheels, reinforced cork gaskets, and planer knives. Authorized U.S. distribution of C.B.G. Acciai woodworking consumables.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
@@ -271,6 +271,7 @@
 
   /* ===== Product lines ===== */
   .lines-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--steel-line);}
+  .lines-grid-2{grid-template-columns:repeat(2,1fr);}
   .line-card{
     background:var(--graphite);
     padding:0 32px 34px;
@@ -425,6 +426,31 @@
   .media-frame img{max-width:100%; height:auto; display:block;}
   .media-frame svg{width:60%; height:auto; color:var(--steel-dim);}
 
+  /* ===== Blueprint diagram ===== */
+  .blueprint{
+    position:relative;
+    background:
+      linear-gradient(rgba(199,205,211,.06) 1px, transparent 1px) 0 0/100% 22px,
+      linear-gradient(90deg, rgba(199,205,211,.06) 1px, transparent 1px) 0 0/22px 100%,
+      linear-gradient(160deg, #12161a, #171b1f);
+  }
+  .blueprint svg{width:72%; color:var(--steel);}
+  .blueprint .dim{stroke:var(--steel-dim); stroke-width:1;}
+  .blueprint .dim-label{fill:var(--steel-dim); font-family:'Inter',sans-serif; font-size:5.5px; letter-spacing:.02em;}
+  .blueprint .accent{stroke:var(--forge);}
+  .blueprint-tag{
+    position:absolute; top:18px; left:18px;
+    font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:.08em;
+    color:var(--steel-dim);
+  }
+  .blueprint-tag b{color:var(--forge);}
+  .blueprint-corner{position:absolute; width:14px; height:14px; opacity:.6;}
+  .blueprint-corner::before, .blueprint-corner::after{content:''; position:absolute; background:var(--steel-dim);}
+  .blueprint-corner::before{width:100%; height:1px; top:50%;}
+  .blueprint-corner::after{width:1px; height:100%; left:50%;}
+  .blueprint-corner.tl{top:14px; left:14px;} .blueprint-corner.tr{top:14px; right:14px;}
+  .blueprint-corner.bl{bottom:14px; left:14px;} .blueprint-corner.br{bottom:14px; right:14px;}
+
   /* ===== Spec pages ===== */
   .spec-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:64px; align-items:start;}
   .spec-block{margin-bottom:36px;}
@@ -459,6 +485,7 @@
     .landmark-row{flex-wrap:wrap;}
     .landmark-item{flex-basis:40%;}
     .lines-grid{grid-template-columns:1fr;}
+    .lines-grid-2{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr;}
     .hero{padding:60px 0 70px;}
     .hero::before{background:none;}
@@ -494,276 +521,78 @@
   </div>
 </header>
 
-<section class="hero" id="top">
-  <div class="hero-photo"><img src="images/hero-grinder.jpg" alt="Precision-cast Salvinox grinder knives, manufactured in Italy"></div>
-  <div class="hero-sheen"></div>
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">OFFICIAL U.S. DISTRIBUTION</div>
-      <h1>Precision blades, engineered in Italy. Backed stateside.</h1>
-      <p class="lead">Nearly a century of Italian metallurgy, built on hardened, high-fatigue Swedish steel. We bring factory-direct logistics, counterfeit verification, and technical procurement support straight to North American operations.</p>
-      <div class="hero-actions">
-        <a href="#lines" class="btn btn-primary">Explore Product Lines</a>
-        <a href="#matcher" class="btn btn-ghost">Request a Corporate Quote</a>
-      </div>
-    </div>
-    <div class="hero-plate">
-      <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span>
-      <div class="plate-label">U.S. EXECUTIVE OFFICE</div>
-      <div class="plate-stat"><span class="num">Paul Dean</span></div>
-      <div class="plate-sub">President — USA &middot; Paul@CBG-USA.com</div>
-      <div class="plate-row"><span>Entity</span><span>C.B.G. USA INC (Delaware Corp)</span></div>
-      <div class="plate-row"><span>HQ</span><span>66 White St Ste 501, New York, NY 10013</span></div>
-      <div class="plate-row"><span>Federal Tax ID</span><span>EIN 32-0810178</span></div>
+<section class="inner-hero" id="top">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html#top">Home</a><span class="sep">/</span><a href="wood-band-saws.html">Wood Band-Saws</a><span class="sep">/</span>Consumables</div>
+    <h1>Woodworking Consumables</h1>
+    <p class="lead">A mill buys a blade occasionally — it consumes Stellite, grinding wheels, gaskets, and planer knives continually. Every consumable line ships through the same authorized channel as the blades themselves.</p>
+    <div class="hero-actions">
+      <a href="index.html#matcher" class="btn btn-primary">Request a Corporate Quote</a>
+      <a href="wood-band-saws.html" class="btn btn-ghost">All Wood Blade Formats</a>
     </div>
   </div>
 </section>
 
-<section id="verify">
-  <div class="wrap verify-grid">
-    <div class="verify-photo">
-      <img src="images/packaging-box.jpg" alt="Genuine C.B.G. Acciai Meat & Fish band saw blade packaging with Made in Italy mark">
-    </div>
-    <div class="verify-copy">
-      <div class="section-tag">COUNTERFEIT PROTECTION</div>
-      <h2>Know what genuine looks like</h2>
-      <p>Every authentic blade ships in manufacturer packaging carrying the tricolor "Made in Italy" band and the C.B.G. Acciai swoosh mark. If a shipment arrives without either, it did not come through an authorized channel.</p>
-      <ul class="verify-list">
-        <li>Tricolor "Made in Italy" band printed on every box</li>
-        <li>C.B.G. Acciai swoosh logo stamped on the packaging face</li>
-        <li>Manufacturer lot code matching C.B.G. USA's verification records</li>
-      </ul>
-      <a href="mailto:Paul@CBG-USA.com" class="btn btn-primary">Report a Suspected Counterfeit</a>
-    </div>
-  </div>
-</section>
-
-<section id="heritage" class="band-alt">
+<section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-tag">ITALIAN MANUFACTURING</div>
-      <h2>One company, two continents</h2>
-      <p>Every blade traces back to a single manufacturing address in Lombardy before it reaches our U.S. logistics network.</p>
-    </div>
-    <div class="heritage-grid">
-      <div class="hero-plate">
-        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span>
-        <div class="plate-label">MANUFACTURING HEADQUARTERS</div>
-        <div class="plate-stat"><span class="num" style="font-size:1.7rem;">CBG Acciai S.p.A.</span></div>
-        <div class="plate-sub">Est. 1966 &middot; Caronno Pertusella, Lombardy</div>
-        <div class="plate-row"><span>Address</span><span>Via Carducci, 680 &middot; 21042 Caronno Pertusella (VA), Italy</span></div>
-        <div class="plate-row"><span>Telephone</span><span>+39 02 9645 0176</span></div>
-        <div class="plate-row"><span>Fax</span><span>+39 02 9658 904</span></div>
-        <div class="plate-row"><span>Email</span><span>info@cbgacciai.com</span></div>
-      </div>
-      <div>
-        <div class="made-in-italy">Made in Italy</div>
-        <div class="landmark-row">
-          <div class="landmark-item">
-            <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 34 Q32 6 60 34" stroke="currentColor" stroke-width="2"/>
-              <path d="M4 34h56M10 34V22M18 34V20M26 34V18M32 34V17M38 34V18M46 34V20M54 34V22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-            <span>ROME</span>
-          </div>
-          <div class="landmark-item">
-            <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 30c8 4 44 4 52 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M6 30c0-3 2-5 4-6M58 30c4-10 2-20-6-24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <line x1="30" y1="6" x2="30" y2="26" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-            <span>VENICE</span>
-          </div>
-          <div class="landmark-item">
-            <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M32 4l6 14h-12l6-14z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-              <path d="M20 34V18h24v16" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M14 34V24h6v10M44 34V24h6v10" stroke="currentColor" stroke-width="1.4"/>
-              <line x1="10" y1="34" x2="54" y2="34" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            <span>MILAN</span>
-          </div>
-          <div class="landmark-item">
-            <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g transform="rotate(6 32 34)">
-                <rect x="24" y="6" width="16" height="28" rx="8" stroke="currentColor" stroke-width="1.6"/>
-                <line x1="24" y1="12" x2="40" y2="12" stroke="currentColor" stroke-width="1"/>
-                <line x1="24" y1="18" x2="40" y2="18" stroke="currentColor" stroke-width="1"/>
-                <line x1="24" y1="24" x2="40" y2="24" stroke="currentColor" stroke-width="1"/>
-                <line x1="24" y1="30" x2="40" y2="30" stroke="currentColor" stroke-width="1"/>
-              </g>
-              <line x1="10" y1="36" x2="54" y2="36" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            <span>PISA</span>
-          </div>
-        </div>
-        <p class="heritage-copy">Steel is sourced from Swedish mills, then hardened, ground, and finished at the Lombardy plant — a few kilometers from Milan — before every blade crosses the Atlantic under C.B.G. USA's authorization.</p>
-      </div>
+      <div class="section-tag">FOUR CONSUMABLE LINES</div>
+      <h2>The recurring supply behind every mill</h2>
+      <p>These are the items a shop reorders on a cycle, not a one-time purchase — stocking them alongside blade orders keeps a sharpening room running without a second vendor.</p>
     </div>
   </div>
-</section>
-
-<section id="lines">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-tag">AUTHORIZED PRODUCT LINES</div>
-      <h2>Three cutting categories, built for premium commercial output</h2>
-      <p>Every line ships under genuine manufacturer warranty, verified through C.B.G.'s authorized North American channel.</p>
-    </div>
-  </div>
-  <div class="lines-grid">
+  <div class="lines-grid lines-grid-2">
     <div class="line-card">
-      <div class="line-photo"><img src="images/blade-teeth.jpg" alt="Close-up of hardened meat band-saw blade teeth"></div>
-      <div class="line-card-body">
-      <div class="line-index">01 &middot; MEAT</div>
-      <h3>Meat Band-Saws</h3>
-      <p>Hardened, industrial bone-saw bands and ring blades for slaughtering lines and butcher stations.</p>
-      <ul>
-        <li><b>Salvador</b> — welded custom loops or continuous stock coils</li>
-        <li><b>Tornado</b> — bone-saw rings tempered against marrow drag</li>
-        <li><b>DorBlade</b> — profiles fit to EU &amp; U.S. splitters</li>
-      </ul>
-      <a class="line-link" href="meat-band-saws.html">View Specifications <span class="arrow"></span></a>
+      <div class="line-card-body" style="padding-top:38px;">
+        <div class="line-index">01 &middot; STELLITE</div>
+        <h3>Stellite Rods</h3>
+        <p>Standard and densified execution, for tipping and re-tipping saw teeth in-house.</p>
+        <table class="spec-table">
+          <tr><td>Diameter</td><td>2.4–6.4 mm</td></tr>
+          <tr><td>Length</td><td>500–4,000 mm</td></tr>
+          <tr><td>Execution</td><td>Standard or densified</td></tr>
+        </table>
       </div>
     </div>
     <div class="line-card">
-      <div class="line-photo"><img src="images/blade-rack.jpg" alt="Finished band-saw blade coils staged in the Italian finishing rack"></div>
-      <div class="line-card-body">
-      <div class="line-index">02 &middot; WOOD</div>
-      <h3>Wood Band-Saws</h3>
-      <p>Narrow and wide industrial profiles built from genuine high-fatigue Swedish strip steel.</p>
-      <ul>
-        <li><b>Narrow profiles</b> — commercial shops &amp; detail curves</li>
-        <li><b>Wide mills</b> — hydraulic-tension headrig facilities</li>
-        <li><b>RAZORBIDE</b> — carbide-tipped, 300-hr service life</li>
-      </ul>
-      <a class="line-link" href="wood-band-saws.html">View Specifications <span class="arrow"></span></a>
+      <div class="line-card-body" style="padding-top:38px;">
+        <div class="line-index">02 &middot; GRINDING WHEELS</div>
+        <h3>Grinding Wheels</h3>
+        <p>Dry and wet sharpening, plus side grinding — resin-bond and CBN constructions.</p>
+        <table class="spec-table">
+          <tr><td>Application</td><td>Dry or wet sharpening, side grinding</td></tr>
+          <tr><td>Bond type</td><td>Resin-bond or CBN</td></tr>
+        </table>
       </div>
     </div>
     <div class="line-card">
-      <div class="line-photo"><img src="images/grinder-detail.jpg" alt="Salvinox cross-knife and perforated grinder plate"></div>
-      <div class="line-card-body">
-      <div class="line-index">03 &middot; GRINDER</div>
-      <h3>Grinder Plates &amp; Knives</h3>
-      <p>Genuine Italian Salvinox stainless plates and hardened tool-steel cutting systems.</p>
-      <ul>
-        <li><b>Enterprise</b> — single cross-knife &amp; disc</li>
-        <li><b>Hobart Cleveland</b> — OEM-matched knives &amp; plates</li>
-        <li><b>Unger</b> — interchangeable multi-stage ring knives</li>
-      </ul>
-      <a class="line-link" href="grinder-plates-knives.html">View Specifications <span class="arrow"></span></a>
+      <div class="line-card-body" style="padding-top:38px;">
+        <div class="line-index">03 &middot; CORK GASKETS</div>
+        <h3>Reinforced Cork Gaskets</h3>
+        <p>Reinforced cork gasket coils for wheel guarding and vibration damping.</p>
+        <table class="spec-table">
+          <tr><td>Coil length</td><td>30 meters</td></tr>
+          <tr><td>Widths</td><td>25–80 mm</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="line-card">
+      <div class="line-card-body" style="padding-top:38px;">
+        <div class="line-index">04 &middot; PLANER KNIVES</div>
+        <h3>Planer Knives</h3>
+        <p>Three steel grades, standard widths, with custom lengths available for OEM planer heads.</p>
+        <table class="spec-table">
+          <tr><td>Steel grades</td><td>HSS18%, Cr13%, CrV</td></tr>
+          <tr><td>Widths</td><td>25, 30, 35 mm</td></tr>
+          <tr><td>Length</td><td>Custom, up to 1,070 mm</td></tr>
+        </table>
       </div>
     </div>
   </div>
-</section>
-
-<section id="tech" class="band-alt">
-  <div class="wrap tech-wrap">
-    <div class="tech-copy">
-      <div class="section-tag">FEATURED TECHNOLOGY</div>
-      <h2>RAZORBIDE. Carbide-tipped, laser-welded.</h2>
-      <p>Structural laser-welded carbide tips fused to our classic flexible Swedish backing steel — shifting the baseline for what a mill can expect between resharpenings.</p>
-      <div class="tech-stats">
-        <div class="tech-stat"><div class="num">100</div><div class="label">HRS TO FIRST RESHARPENING*</div></div>
-        <div class="tech-stat"><div class="num">300</div><div class="label">HRS TOTAL RATED SERVICE LIFE*</div></div>
-      </div>
-      <p style="color:var(--steel-dim); font-size:12px; font-style:italic; margin-top:18px;">*Performance figures published by CBG Acciai; actual life varies by application and operating conditions.</p>
-      <div style="margin-top:20px;"><a href="razorbide.html" class="btn btn-ghost">Full RAZORBIDE Specifications</a></div>
-    </div>
-    <div class="blade-diagram">
-      <svg viewBox="0 0 300 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10" y1="80" x2="290" y2="80" stroke="#3a434b" stroke-width="2"/>
-        <path d="M10 80 L30 60 L50 80 L70 60 L90 80 L110 60 L130 80 L150 60 L170 80 L190 60 L210 80 L230 60 L250 80 L270 60 L290 80"
-          stroke="#e2481f" stroke-width="3" stroke-linejoin="round" fill="none"/>
-        <circle cx="30" cy="60" r="3" fill="#f4f5f6"/>
-        <circle cx="70" cy="60" r="3" fill="#f4f5f6"/>
-        <circle cx="110" cy="60" r="3" fill="#f4f5f6"/>
-        <circle cx="150" cy="60" r="3" fill="#f4f5f6"/>
-        <circle cx="190" cy="60" r="3" fill="#f4f5f6"/>
-        <circle cx="230" cy="60" r="3" fill="#f4f5f6"/>
-        <circle cx="270" cy="60" r="3" fill="#f4f5f6"/>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<section id="logistics">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-tag">LOGISTICS &amp; VERIFICATION</div>
-      <h2>Centrally tracked, factory-direct infrastructure</h2>
-      <p>Backing continuous uptime for high-throughput packing plants and industrial wood shops across North America.</p>
-    </div>
-    <div class="logi-wrap">
-      <div class="logi-card">
-        <h4>Primary Shipping &amp; Warehouse Depot</h4>
-        <div class="meta">GEODIS LOGISTICS HUB</div>
-        <p>200 Tradeport Drive, Suite 400</p>
-        <p>Atlanta, GA 30354</p>
-        <p style="margin-top:14px;">Custom-length welding and catastrophic mill-break turnaround are handled directly from this facility.</p>
-      </div>
-      <div class="logi-card">
-        <h4>Corporate Identity &amp; Verification</h4>
-        <div class="id-grid">
-          <div class="id-item"><div class="k">ENTITY REGISTRATION</div><div class="v">Delaware Corp</div></div>
-          <div class="id-item"><div class="k">FEDERAL TAX ID</div><div class="v">EIN 32-0810178</div></div>
-          <div class="id-item"><div class="k">PROCUREMENT</div><div class="v">ACH &amp; ERP Ready</div></div>
-          <div class="id-item"><div class="k">STANDING</div><div class="v">Fully Registered Vendor</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="matcher" class="band-alt">
-  <div class="wrap">
-    <div class="section-head" style="margin:0 auto 44px; text-align:center;">
-      <div class="section-tag" style="text-align:center;">INTERACTIVE U.S. PRODUCT MATCHER</div>
-      <h2>Configure your cutting profile</h2>
-      <p style="margin-inline:auto;">Three quick steps route your request directly to Paul Dean for verification.</p>
-    </div>
-
-    <div class="matcher">
-      <div class="matcher-top">
-        <div class="step-label" id="stepLabel">STEP 1 OF 3</div>
-        <div class="step-dots"><span class="active" id="dot1"></span><span id="dot2"></span><span id="dot3"></span></div>
-      </div>
-
-      <div class="m-step active" id="step1">
-        <h3>Select your target distribution line</h3>
-        <div class="opt-grid">
-          <div class="opt" data-value="Meat Bandsaw Blades">
-            <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M14 6l6 6-6 6" stroke="#e2481f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Meat Bandsaw Blades</span>
-          </div>
-          <div class="opt" data-value="Wood Bandsaw Blades">
-            <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M14 6l6 6-6 6" stroke="#e2481f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Wood Bandsaw Blades</span>
-          </div>
-          <div class="opt" data-value="Grinder Plates & Knives">
-            <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M14 6l6 6-6 6" stroke="#e2481f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Grinder Plates &amp; Knives</span>
-          </div>
-        </div>
-        <div class="m-nav"><span></span><button class="btn btn-primary" id="toStep2">Continue</button></div>
-      </div>
-
-      <div class="m-step" id="step2">
-        <h3>Machinery model &amp; sizing requirements</h3>
-        <textarea id="machineryInput" placeholder='e.g. "Hobart #22 System", "Biro Band Saw Model 3334", or specific width / teeth parameters'></textarea>
-        <div class="m-nav"><button class="btn btn-ghost" id="toStep1">Back</button><button class="btn btn-primary" id="toStep3">Continue</button></div>
-      </div>
-
-      <div class="m-step" id="step3">
-        <h3>Corporate procurement contact</h3>
-        <input type="text" id="nameInput" placeholder="Full name">
-        <input type="text" id="companyInput" placeholder="Company">
-        <input type="email" id="emailInput" placeholder="Email address">
-        <div class="m-nav">
-          <button class="btn btn-ghost" id="toStep2b">Back</button>
-          <button class="btn btn-primary" id="launchEmail">Launch Corporate Email Request</button>
-        </div>
-      </div>
+    <div class="format-note">
+      <b>Running low on sharpening-room stock?</b> Consumables ship alongside blade orders on the same authorized invoice — no second vendor to manage.
+      <div style="margin-top:16px;"><a href="index.html#matcher" class="btn btn-primary">Request Consumables Pricing</a></div>
     </div>
   </div>
 </section>
@@ -804,51 +633,10 @@
 </footer>
 
 <script>
-  // Mobile nav
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
   menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-  // Product line selection
-  let selectedLine = '';
-  document.querySelectorAll('.opt').forEach(opt => {
-    opt.addEventListener('click', () => {
-      document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
-      opt.classList.add('selected');
-      selectedLine = opt.dataset.value;
-    });
-  });
-
-  // Stepper
-  const steps = [document.getElementById('step1'), document.getElementById('step2'), document.getElementById('step3')];
-  const dots = [document.getElementById('dot1'), document.getElementById('dot2'), document.getElementById('dot3')];
-  const stepLabel = document.getElementById('stepLabel');
-  function goTo(i){
-    steps.forEach((s, idx) => s.classList.toggle('active', idx === i));
-    dots.forEach((d, idx) => d.classList.toggle('active', idx <= i));
-    stepLabel.textContent = 'STEP ' + (i+1) + ' OF 3';
-  }
-  document.getElementById('toStep2').addEventListener('click', () => goTo(1));
-  document.getElementById('toStep1').addEventListener('click', () => goTo(0));
-  document.getElementById('toStep3').addEventListener('click', () => goTo(2));
-  document.getElementById('toStep2b').addEventListener('click', () => goTo(1));
-
-  document.getElementById('launchEmail').addEventListener('click', () => {
-    const machinery = document.getElementById('machineryInput').value || 'Not specified';
-    const name = document.getElementById('nameInput').value || '';
-    const company = document.getElementById('companyInput').value || '';
-    const email = document.getElementById('emailInput').value || '';
-    const subject = encodeURIComponent('Corporate Quote Request — ' + (selectedLine || 'Cutting Systems'));
-    const body = encodeURIComponent(
-      'Product line: ' + (selectedLine || 'Not specified') + '\n' +
-      'Machinery / sizing: ' + machinery + '\n\n' +
-      'Contact name: ' + name + '\n' +
-      'Company: ' + company + '\n' +
-      'Reply-to email: ' + email
-    );
-    window.location.href = 'mailto:Paul@CBG-USA.com?subject=' + subject + '&body=' + body;
-  });
 </script>
 
 </body>
