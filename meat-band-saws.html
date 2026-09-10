@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meat Band-Saws | C.B.G. USA Acciai</title>
+<meta name="description" content="Genuine Salvador, Tornado, and DorBlade meat band-saw blades. Authorized U.S. distribution of C.B.G. Acciai cutting systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --graphite:#101214;
+    --panel:#171b1f;
+    --panel-2:#1d2329;
+    --steel:#c7cdd3;
+    --steel-dim:#8b939b;
+    --steel-line:#2b3238;
+    --forge:#e2481f;
+    --forge-dim:#9c351a;
+    --hazard:#d9a441;
+    --cyan:#29b8e0;
+    --white:#f4f5f6;
+    --radius:2px;
+    --wrap:1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--graphite);
+    color:var(--steel);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Oswald',sans-serif;
+    color:var(--white);
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--wrap); margin:0 auto; padding:0 28px;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 26px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    border:1px solid transparent;
+    clip-path:polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--forge); color:#150701;}
+  .btn-primary:hover{background:#ff5a2c;}
+  .btn-ghost{background:transparent; color:var(--white); border:1px solid var(--steel-line);}
+  .btn-ghost:hover{border-color:var(--steel-dim);}
+
+  /* ===== Hazard strip ===== */
+  .hazard{
+    background:repeating-linear-gradient(135deg, var(--hazard), var(--hazard) 14px, #171307 14px, #171307 28px);
+    color:#171307;
+  }
+  .hazard-inner{
+    background:rgba(16,18,20,.94);
+    color:var(--hazard);
+    padding:9px 28px;
+    text-align:center;
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  .hazard-inner strong{color:var(--white);}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(16,18,20,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--steel-line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:78px;
+  }
+  .logo{
+    font-family:'Oswald',sans-serif;
+    font-size:19px;
+    font-weight:700;
+    color:var(--white);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo .mark{
+    width:14px; height:22px;
+    background:linear-gradient(180deg, var(--forge), var(--forge-dim));
+    clip-path:polygon(0 0, 100% 0, 70% 100%, 0% 100%);
+    display:inline-block;
+  }
+  .logo-text{position:relative; display:inline-block;}
+  .logo small{
+    display:block;
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:10px;
+    color:var(--steel-dim);
+    letter-spacing:.14em;
+    margin-top:2px;
+  }
+  .logo-text .swoosh{
+    position:absolute; left:0; bottom:-7px; width:100%; height:8px; overflow:visible;
+  }
+  nav.links{display:flex; gap:34px; align-items:center;}
+  nav.links a{
+    font-size:14px; font-weight:500; color:var(--steel);
+    padding:6px 0; border-bottom:1px solid transparent;
+    transition:color .15s, border-color .15s;
+  }
+  nav.links a:hover{color:var(--white); border-color:var(--forge);}
+  .nav-actions{display:flex; align-items:center; gap:18px;}
+  .menu-toggle{
+    display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer;
+  }
+  .menu-toggle span{width:22px; height:2px; background:var(--white);}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    padding:96px 0 120px;
+    overflow:hidden;
+    background:var(--graphite);
+  }
+  .hero-photo{
+    position:absolute; inset:0;
+    clip-path:polygon(40% 0, 100% 0, 100% 100%, 26% 100%);
+    z-index:0;
+  }
+  .hero-photo img{width:100%; height:100%; object-fit:cover; object-position:60% 30%;}
+  .hero-photo::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(100deg, var(--graphite) 0%, rgba(16,18,20,.6) 26%, rgba(16,18,20,.1) 55%),
+               linear-gradient(0deg, rgba(16,18,20,.55), transparent 40%);
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 82% 18%, rgba(226,72,31,.18), transparent 55%);
+    pointer-events:none;
+    z-index:1;
+  }
+  .hero-sheen{
+    position:absolute; top:-20%; right:8%;
+    width:520px; height:900px;
+    background:linear-gradient(115deg, transparent 40%, rgba(255,255,255,.06) 48%, transparent 56%);
+    animation:sheen 7s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes sheen{
+    0%,100%{transform:translateX(-40px);}
+    50%{transform:translateX(40px);}
+  }
+  .hero-grid{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:60px;
+    align-items:center;
+  }
+  .eyebrow{
+    color:var(--forge);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.06em;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 4.4vw, 3.6rem);
+    max-width:14ch;
+    margin-bottom:22px;
+  }
+  .hero p.lead{
+    font-size:17px;
+    color:var(--steel-dim);
+    max-width:52ch;
+    margin-bottom:34px;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+  .hero-plate{
+    position:relative;
+    background:rgba(23,27,31,.74);
+    backdrop-filter:blur(8px) saturate(120%);
+    border:1px solid var(--steel-line);
+    padding:34px;
+    clip-path:polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
+  }
+  .hero-plate .rivet{
+    position:absolute; width:7px; height:7px; border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #40484f, #14171a);
+  }
+  .hero-plate .rivet.tl{top:14px; left:14px;} .hero-plate .rivet.tr{top:14px; right:14px;}
+  .hero-plate .rivet.bl{bottom:14px; left:14px;}
+  .plate-label{
+    font-size:11px; letter-spacing:.12em; color:var(--steel-dim); font-weight:600; margin-bottom:16px;
+  }
+  .plate-stat{display:flex; align-items:baseline; gap:8px; margin-bottom:6px;}
+  .plate-stat .num{font-family:'Oswald',sans-serif; font-size:2.6rem; color:var(--white); font-weight:700;}
+  .plate-stat .unit{color:var(--forge); font-size:15px; font-weight:600;}
+  .plate-sub{font-size:13.5px; color:var(--steel-dim); margin-bottom:22px; padding-bottom:22px; border-bottom:1px solid var(--steel-line);}
+  .plate-row{display:flex; justify-content:space-between; font-size:13.5px; padding:9px 0; border-bottom:1px dashed var(--steel-line);}
+  .plate-row:last-child{border-bottom:none;}
+  .plate-row span:first-child{color:var(--steel-dim);}
+  .plate-row span:last-child{color:var(--white); font-weight:500; text-align:right;}
+
+  /* ===== Section shell ===== */
+  section{padding:100px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-tag{color:var(--forge); font-size:13px; font-weight:600; letter-spacing:.06em; margin-bottom:12px;}
+  .section-head h2{font-size:clamp(1.7rem, 2.6vw, 2.3rem);}
+  .section-head p{color:var(--steel-dim); margin-top:14px; font-size:15.5px; max-width:56ch;}
+
+  .band-alt{background:var(--panel);}
+
+  /* ===== Verify ===== */
+  .verify-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:64px; align-items:center;}
+  .verify-photo{
+    background:linear-gradient(160deg, var(--panel), var(--panel-2));
+    border:1px solid var(--steel-line);
+    padding:26px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .verify-photo img{max-width:100%; height:auto; display:block;}
+  .verify-copy p{color:var(--steel-dim); margin-bottom:24px; max-width:54ch;}
+  .verify-list{list-style:none; margin-bottom:30px;}
+  .verify-list li{
+    font-size:14.5px; color:var(--steel);
+    padding:12px 0 12px 22px; position:relative;
+    border-top:1px solid var(--steel-line);
+  }
+  .verify-list li:first-child{border-top:none;}
+  .verify-list li::before{content:''; position:absolute; left:0; top:19px; width:10px; height:2px; background:var(--forge);}
+
+  /* ===== Heritage ===== */
+  .heritage-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  .made-in-italy{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:2.1rem;
+    text-align:center;
+    margin-bottom:30px;
+    background:linear-gradient(90deg, #4caf6d, var(--white) 48%, #d1483f);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .landmark-row{display:flex; justify-content:space-between; gap:14px; margin-bottom:30px;}
+  .landmark-item{flex:1; display:flex; flex-direction:column; align-items:center; gap:10px;}
+  .landmark-item svg{width:100%; height:44px; color:var(--steel-dim); transition:color .2s ease;}
+  .landmark-item:hover svg{color:var(--forge);}
+  .landmark-item span{font-size:10.5px; color:var(--steel-dim); letter-spacing:.1em; font-weight:600;}
+  .heritage-copy{color:var(--steel-dim); font-size:14.5px; text-align:center; max-width:46ch; margin:0 auto;}
+
+  /* ===== Product lines ===== */
+  .lines-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--steel-line);}
+  .line-card{
+    background:var(--graphite);
+    padding:0 32px 34px;
+    position:relative;
+    transition:background .18s ease;
+  }
+  .line-card:hover{background:var(--panel-2);}
+  .line-photo{
+    height:180px;
+    margin:0 -32px 26px;
+    overflow:hidden;
+    position:relative;
+  }
+  .line-photo img{width:100%; height:100%; object-fit:cover; filter:grayscale(10%) contrast(1.05);}
+  .line-photo::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(0deg, var(--graphite) 0%, transparent 55%);
+  }
+  .line-card:hover .line-photo::after{background:linear-gradient(0deg, var(--panel-2) 0%, transparent 55%);}
+  .line-card-body{padding-top:30px;}
+  .line-index{
+    font-family:'Oswald',sans-serif; font-size:13px; color:var(--forge); font-weight:600; margin-bottom:22px;
+    letter-spacing:.05em;
+  }
+  .line-card h3{font-size:1.35rem; margin-bottom:14px;}
+  .line-card p{font-size:14.5px; color:var(--steel-dim); margin-bottom:22px;}
+  .line-card ul{list-style:none; margin-bottom:26px;}
+  .line-card li{
+    font-size:13.5px; color:var(--steel);
+    padding:7px 0 7px 18px; position:relative;
+    border-top:1px solid var(--steel-line);
+  }
+  .line-card li:first-child{border-top:none;}
+  .line-card li::before{
+    content:''; position:absolute; left:0; top:15px; width:9px; height:2px; background:var(--forge);
+  }
+  .line-card li b{color:var(--white);}
+  .line-link{font-size:13.5px; font-weight:600; color:var(--white); display:inline-flex; align-items:center; gap:8px;}
+  .line-link .arrow{width:16px; height:1px; background:var(--forge); position:relative;}
+  .line-link .arrow::after{content:''; position:absolute; right:0; top:-2px; width:5px; height:5px; border-top:1px solid var(--forge); border-right:1px solid var(--forge); transform:rotate(45deg);}
+
+  /* ===== Featured tech ===== */
+  .tech-wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  .tech-copy .section-tag{margin-bottom:12px;}
+  .tech-copy h2{font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:18px;}
+  .tech-copy p{color:var(--steel-dim); margin-bottom:28px; max-width:48ch;}
+  .tech-stats{display:flex; gap:0;}
+  .tech-stat{flex:1; padding:0 26px 0 0; border-right:1px solid var(--steel-line); margin-right:26px;}
+  .tech-stat:last-child{border-right:none;}
+  .tech-stat .num{font-family:'Oswald',sans-serif; font-size:2.8rem; color:var(--white); font-weight:700;}
+  .tech-stat .label{font-size:12.5px; color:var(--steel-dim); margin-top:6px;}
+  .blade-diagram{
+    position:relative;
+    height:340px;
+    background:linear-gradient(160deg, var(--panel), var(--panel-2));
+    border:1px solid var(--steel-line);
+    clip-path:polygon(6% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .blade-diagram svg{width:82%; height:auto;}
+
+  /* ===== Logistics ===== */
+  .logi-wrap{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .logi-card{
+    background:var(--graphite);
+    border:1px solid var(--steel-line);
+    padding:30px;
+  }
+  .logi-card h4{font-size:1.05rem; margin-bottom:6px;}
+  .logi-card .meta{font-size:13px; color:var(--forge); font-weight:600; margin-bottom:20px;}
+  .logi-card p{font-size:14px; color:var(--steel-dim); margin-bottom:4px;}
+  .id-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:24px;}
+  .id-item{border-top:1px solid var(--steel-line); padding-top:12px;}
+  .id-item .k{font-size:11.5px; color:var(--steel-dim); letter-spacing:.06em; margin-bottom:6px;}
+  .id-item .v{font-size:14px; color:var(--white); font-weight:500;}
+
+  /* ===== Matcher ===== */
+  .matcher{
+    background:var(--panel);
+    border:1px solid var(--steel-line);
+    padding:44px;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .matcher-top{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:30px;}
+  .step-dots{display:flex; gap:8px;}
+  .step-dots span{width:26px; height:3px; background:var(--steel-line);}
+  .step-dots span.active{background:var(--forge);}
+  .step-label{font-size:12px; color:var(--steel-dim); letter-spacing:.06em;}
+  .m-step{display:none;}
+  .m-step.active{display:block;}
+  .m-step h3{font-size:1.2rem; margin-bottom:18px;}
+  .opt-grid{display:grid; gap:10px; margin-bottom:28px;}
+  .opt{
+    display:flex; align-items:center; gap:14px;
+    padding:16px 18px; border:1px solid var(--steel-line); cursor:pointer;
+    transition:border-color .15s;
+    background:var(--graphite);
+  }
+  .opt:hover{border-color:var(--steel-dim);}
+  .opt.selected{border-color:var(--forge); background:var(--panel-2);}
+  .opt .ico{width:20px; height:20px; flex-shrink:0;}
+  .opt span{font-size:14.5px; color:var(--white); font-weight:500;}
+  textarea, input[type=text], input[type=email]{
+    width:100%; background:var(--graphite); border:1px solid var(--steel-line);
+    color:var(--white); padding:14px 16px; font-family:'Inter',sans-serif; font-size:14.5px;
+    margin-bottom:14px;
+  }
+  textarea{min-height:110px; resize:vertical;}
+  .m-nav{display:flex; justify-content:space-between; margin-top:10px;}
+
+  /* ===== Footer ===== */
+  footer{background:#0b0c0d; border-top:1px solid var(--steel-line); padding:70px 0 30px;}
+  .foot-grid{display:grid; grid-template-columns:1.1fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px;}
+  .foot-brand .logo{margin-bottom:14px;}
+  .foot-brand p{font-size:13.5px; color:var(--steel-dim); max-width:38ch;}
+  .foot-col h5{font-size:12px; letter-spacing:.08em; color:var(--steel-dim); margin-bottom:16px; font-family:'Inter',sans-serif; font-weight:600;}
+  .foot-col p, .foot-col a{display:block; font-size:13.5px; color:var(--steel); margin-bottom:8px;}
+  .foot-bottom{border-top:1px solid var(--steel-line); padding-top:24px; font-size:12.5px; color:var(--steel-dim); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  /* ===== Breadcrumb ===== */
+  .breadcrumb{font-size:12.5px; color:var(--steel-dim); margin-bottom:18px; position:relative; z-index:2;}
+  .breadcrumb a{color:var(--steel-dim); border-bottom:1px solid transparent; transition:color .15s, border-color .15s;}
+  .breadcrumb a:hover{color:var(--white); border-color:var(--forge);}
+  .breadcrumb .sep{margin:0 8px; color:var(--steel-line);}
+
+  /* ===== Inner / secondary hero (category & detail pages) ===== */
+  .inner-hero{position:relative; padding:64px 0 78px; overflow:hidden; background:var(--graphite);}
+  .inner-hero-photo{position:absolute; inset:0; clip-path:polygon(46% 0, 100% 0, 100% 100%, 34% 100%); z-index:0;}
+  .inner-hero-photo img{width:100%; height:100%; object-fit:cover;}
+  .inner-hero-photo::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(100deg, var(--graphite) 0%, rgba(16,18,20,.62) 32%, rgba(16,18,20,.12) 58%);
+  }
+  .inner-hero::before{
+    content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(circle at 82% 15%, rgba(226,72,31,.16), transparent 55%);
+  }
+  .inner-hero .wrap{position:relative; z-index:2;}
+  .inner-hero h1{font-size:clamp(2rem, 3.6vw, 2.7rem); max-width:18ch; margin-bottom:16px;}
+  .inner-hero p.lead{color:var(--steel-dim); font-size:16px; max-width:54ch; margin-bottom:28px;}
+
+  /* ===== Media frame (photo or diagram placeholder) ===== */
+  .media-frame{
+    background:linear-gradient(160deg, var(--panel), var(--panel-2));
+    border:1px solid var(--steel-line);
+    padding:26px;
+    display:flex; align-items:center; justify-content:center;
+    min-height:280px;
+  }
+  .media-frame img{max-width:100%; height:auto; display:block;}
+  .media-frame svg{width:60%; height:auto; color:var(--steel-dim);}
+
+  /* ===== Blueprint diagram ===== */
+  .blueprint{
+    position:relative;
+    background:
+      linear-gradient(rgba(199,205,211,.06) 1px, transparent 1px) 0 0/100% 22px,
+      linear-gradient(90deg, rgba(199,205,211,.06) 1px, transparent 1px) 0 0/22px 100%,
+      linear-gradient(160deg, #12161a, #171b1f);
+  }
+  .blueprint svg{width:72%; color:var(--steel);}
+  .blueprint .dim{stroke:var(--steel-dim); stroke-width:1;}
+  .blueprint .dim-label{fill:var(--steel-dim); font-family:'Inter',sans-serif; font-size:5.5px; letter-spacing:.02em;}
+  .blueprint .accent{stroke:var(--forge);}
+  .blueprint-tag{
+    position:absolute; top:18px; left:18px;
+    font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:.08em;
+    color:var(--steel-dim);
+  }
+  .blueprint-tag b{color:var(--forge);}
+  .blueprint-corner{position:absolute; width:14px; height:14px; opacity:.6;}
+  .blueprint-corner::before, .blueprint-corner::after{content:''; position:absolute; background:var(--steel-dim);}
+  .blueprint-corner::before{width:100%; height:1px; top:50%;}
+  .blueprint-corner::after{width:1px; height:100%; left:50%;}
+  .blueprint-corner.tl{top:14px; left:14px;} .blueprint-corner.tr{top:14px; right:14px;}
+  .blueprint-corner.bl{bottom:14px; left:14px;} .blueprint-corner.br{bottom:14px; right:14px;}
+
+  /* ===== Spec pages ===== */
+  .spec-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:64px; align-items:start;}
+  .spec-block{margin-bottom:36px;}
+  .spec-block h3{font-size:1.15rem; margin-bottom:14px;}
+  .spec-block p{color:var(--steel-dim); font-size:14.5px; max-width:60ch;}
+  .spec-table{width:100%; border-collapse:collapse;}
+  .spec-table tr{border-top:1px solid var(--steel-line);}
+  .spec-table tr:first-child{border-top:none;}
+  .spec-table td{padding:12px 0; font-size:14px; vertical-align:top;}
+  .spec-table td:first-child{color:var(--steel-dim); width:38%;}
+  .spec-table td:last-child{color:var(--white); font-weight:500;}
+  .compat-tags{display:flex; flex-wrap:wrap; gap:10px;}
+  .compat-tag{font-size:12.5px; padding:9px 15px; border:1px solid var(--steel-line); color:var(--steel);}
+
+  /* ===== Format hub grid (reuses line-card look) ===== */
+  .format-note{
+    background:var(--graphite); border:1px solid var(--steel-line);
+    padding:22px 26px; font-size:13.5px; color:var(--steel-dim); margin-top:40px;
+  }
+  .format-note b{color:var(--white);}
+
+  @media (max-width: 880px){
+    .spec-grid{grid-template-columns:1fr;}
+    .menu-toggle{display:flex;}
+    nav.links{
+      position:fixed; top:78px; left:0; right:0; bottom:0;
+      background:var(--graphite); flex-direction:column; padding:30px 28px; gap:24px;
+      transform:translateX(100%); transition:transform .2s ease;
+    }
+    nav.links.open{transform:translateX(0);}
+    .hero-grid, .tech-wrap, .logi-wrap, .heritage-grid, .verify-grid{grid-template-columns:1fr;}
+    .landmark-row{flex-wrap:wrap;}
+    .landmark-item{flex-basis:40%;}
+    .lines-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+    .hero{padding:60px 0 70px;}
+    .hero::before{background:none;}
+    .hero{background:var(--graphite);}
+    .matcher{padding:26px;}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="hazard"><div class="hazard-inner wrap">
+  ⚠ <strong>Buy genuine.</strong> Salvador &amp; Salvinox products have been counterfeited in some markets — C.B.G. USA INC is the only authorized channel for genuine, manufacturer-warranted product.
+</div></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html#top" class="logo"><span class="mark"></span><span class="logo-text">C.B.G. USA<br><small>ACCIAI &middot; ITALIAN CUTTING SYSTEMS</small>
+      <svg class="swoosh" viewBox="0 0 140 10" preserveAspectRatio="none"><path d="M1 7 Q35 1 70 6 T139 3" stroke="var(--cyan)" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+    </span></a>
+    <nav class="links" id="navLinks">
+      <a href="index.html#lines">Product Lines</a>
+      <a href="meat-band-saws.html">Meat Blades</a>
+      <a href="grinder-plates-knives.html">Grinder Systems</a>
+      <a href="index.html#tech">RAZORBIDE</a>
+      <a href="index.html#matcher">Blade Matcher</a>
+      <a href="mailto:Paul@CBG-USA.com">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="index.html#matcher" class="btn btn-primary">Request a Quote</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="inner-hero" id="top">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html#top">Home</a><span class="sep">/</span>Meat Band-Saws</div>
+    <h1>Meat Band-Saws</h1>
+    <p class="lead">Hardened, welded bone-saw bands and continuous coils for slaughtering lines, butcher stations, and hand-saw work — genuine Salvador, Tornado, and DorBlade steel.</p>
+    <div class="hero-actions">
+      <a href="#formats" class="btn btn-primary">View Brands</a>
+      <a href="index.html#matcher" class="btn btn-ghost">Request a Corporate Quote</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">TOOTH PITCH &amp; CUT TYPE</div>
+      <h2>Four tooth profiles, matched to the cut</h2>
+      <p>Every band is hardened carbon steel with tempered tooth tips, welded to length or supplied as continuous stock coils. Tooth pitch is what separates one profile from the next — matching pitch to material is what keeps a line running clean without dragging or chipping.</p>
+    </div>
+    <div class="compat-tags">
+      <span class="compat-tag">4 TPI (6.35mm) — Fresh Meat &amp; Bone</span>
+      <span class="compat-tag">3 TPI (8.47mm) — Frozen Meat &amp; Fish</span>
+      <span class="compat-tag">SPS C10 / C12 — Bovine &amp; Swine Carcasses</span>
+      <span class="compat-tag">9 TPI (2.82mm) — Butcher Hand-Saw</span>
+    </div>
+  </div>
+</section>
+
+<section id="formats" class="band-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">THREE MANUFACTURER LINES</div>
+      <h2>Choose the brand that matches your supply agreement</h2>
+      <p>Every line ships under genuine manufacturer warranty, verified through C.B.G.'s authorized North American channel.</p>
+    </div>
+  </div>
+  <div class="lines-grid">
+    <div class="line-card">
+      <div class="line-photo media-frame blueprint" style="height:180px; margin:0 -32px 26px; border:none; border-radius:0;">
+        <svg viewBox="0 0 64 76" style="width:auto; height:150px;" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="4" y1="34" x2="60" y2="34" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M4 34 L14 18 L24 34 L34 18 L44 34 L54 18 L60 26" stroke="var(--forge)" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+          <circle cx="14" cy="18" r="1.8" fill="currentColor"/><circle cx="34" cy="18" r="1.8" fill="currentColor"/><circle cx="54" cy="18" r="1.8" fill="currentColor"/>
+          <line x1="14" y1="60" x2="34" y2="60" class="dim"/>
+          <line x1="14" y1="56" x2="14" y2="64" class="dim"/>
+          <line x1="34" y1="56" x2="34" y2="64" class="dim"/>
+          <text x="24" y="71" text-anchor="middle" class="dim-label">TOOTH PITCH</text>
+        </svg>
+      </div>
+      <div class="line-card-body">
+        <div class="line-index">01 &middot; SALVADOR</div>
+        <h3>Salvador</h3>
+        <p>Welded custom loops or continuous stock coils, hardened for fresh meat and bone-in cuts on high-volume slaughtering lines.</p>
+        <a class="line-link" href="salvador-band-saws.html">View Specifications <span class="arrow"></span></a>
+      </div>
+    </div>
+    <div class="line-card">
+      <div class="line-photo media-frame blueprint" style="height:180px; margin:0 -32px 26px; border:none; border-radius:0;">
+        <svg viewBox="0 0 64 76" style="width:auto; height:150px;" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="4" y1="34" x2="60" y2="34" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M4 34 L14 18 L24 34 L34 18 L44 34 L54 18 L60 26" stroke="var(--forge)" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+          <circle cx="14" cy="18" r="1.8" fill="currentColor"/><circle cx="34" cy="18" r="1.8" fill="currentColor"/><circle cx="54" cy="18" r="1.8" fill="currentColor"/>
+          <line x1="14" y1="60" x2="34" y2="60" class="dim"/>
+          <line x1="14" y1="56" x2="14" y2="64" class="dim"/>
+          <line x1="34" y1="56" x2="34" y2="64" class="dim"/>
+          <text x="24" y="71" text-anchor="middle" class="dim-label">TOOTH PITCH</text>
+        </svg>
+      </div>
+      <div class="line-card-body">
+        <div class="line-index">02 &middot; TORNADO</div>
+        <h3>Tornado</h3>
+        <p>Bone-saw rings tempered against marrow drag — built for consistent output on carcass-splitting and portioning lines.</p>
+        <a class="line-link" href="tornado-band-saws.html">View Specifications <span class="arrow"></span></a>
+      </div>
+    </div>
+    <div class="line-card">
+      <div class="line-photo media-frame blueprint" style="height:180px; margin:0 -32px 26px; border:none; border-radius:0;">
+        <svg viewBox="0 0 64 76" style="width:auto; height:150px;" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="4" y1="34" x2="60" y2="34" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M4 34 L14 18 L24 34 L34 18 L44 34 L54 18 L60 26" stroke="var(--forge)" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+          <circle cx="14" cy="18" r="1.8" fill="currentColor"/><circle cx="34" cy="18" r="1.8" fill="currentColor"/><circle cx="54" cy="18" r="1.8" fill="currentColor"/>
+          <line x1="14" y1="60" x2="34" y2="60" class="dim"/>
+          <line x1="14" y1="56" x2="14" y2="64" class="dim"/>
+          <line x1="34" y1="56" x2="34" y2="64" class="dim"/>
+          <text x="24" y="71" text-anchor="middle" class="dim-label">TOOTH PITCH</text>
+        </svg>
+      </div>
+      <div class="line-card-body">
+        <div class="line-index">03 &middot; DORBLADE</div>
+        <h3>DorBlade</h3>
+        <p>Profiles fit to EU and U.S. splitters — the format to specify when equipment must stay within factory service tolerances.</p>
+        <a class="line-link" href="dorblade-band-saws.html">View Specifications <span class="arrow"></span></a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="format-note">
+      <b>Not sure which brand fits your line?</b> Use the interactive matcher on the home page — it routes your machinery model and sizing requirements directly to Paul Dean for verification.
+      <div style="margin-top:16px;"><a href="index.html#matcher" class="btn btn-primary">Open the Blade Matcher</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html#top" class="logo"><span class="mark"></span>C.B.G. USA ACCIAI</a>
+        <p>Authorized domestic distribution network for genuine Salvador, Salvinox, Tornado &amp; DorBlade industrial cutting systems. All manufacturing designs originate in Caronno Pertusella, Italy.</p>
+      </div>
+      <div class="foot-col">
+        <h5>CORPORATE LEGAL MATRIX</h5>
+        <p>C.B.G. USA INC (Delaware Corp)</p>
+        <p>66 White St Ste 501, New York, NY 10013</p>
+        <p>EIN 32-0810178</p>
+      </div>
+      <div class="foot-col">
+        <h5>PRIMARY FREIGHT HUB</h5>
+        <p>Warehouse at GEODIS</p>
+        <p>200 Tradeport Drive Suite 400</p>
+        <p>Atlanta, GA 30354</p>
+        <a href="mailto:Paul@CBG-USA.com">Paul@CBG-USA.com</a>
+      </div>
+      <div class="foot-col">
+        <h5>ITALIAN MANUFACTURING HQ</h5>
+        <p>CBG Acciai S.p.A.</p>
+        <p>Via Carducci, 680</p>
+        <p>21042 Caronno Pertusella (VA), Italy</p>
+        <a href="mailto:info@cbgacciai.com">info@cbgacciai.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 C.B.G. USA INC. All rights reserved.</span>
+      <span>Genuine manufacturer-warranted product only.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+
+</body>
+</html>
